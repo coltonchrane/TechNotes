@@ -4,6 +4,6 @@ A collection of technical notes and guides.
 
 ## Contents
 
-- [**Disk Management**](https://github.com/coltonchrane/TechNotes/tree/main/Disk%20Management): Guides for image compression, `ncdu`, and Ubuntu cleanup.
-- [**Docker**](https://github.com/coltonchrane/TechNotes/tree/main/Docker): Notes on file watching and cleanup strategies.
-- [**Self Hosting**](https://github.com/coltonchrane/TechNotes/tree/main/Self%20Hosting): Best practices for running Docker and LXC in production.
+- [**Disk Management**](https://github.com/coltonchrane/TechNotes/tree/main/Disk%20Management): Getting the most bang for your buck in the times of hardware hoarding
+- [**Docker**](https://github.com/coltonchrane/TechNotes/tree/main/Docker): Container-verse
+- [**Networking**](https://github.com/coltonchrane/TechNotes/tree/main/Networking): Doing stuff to/on the internet
