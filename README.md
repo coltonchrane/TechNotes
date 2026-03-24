@@ -22,6 +22,9 @@ A collection of technical notes, guides, and quick-reference documentation for v
 
 ## 📖 Contents
 
+### [Programming Languages](./Programming%20Languages)
+- [How C# Works](./Programming%20Languages/how_csharp_works.md)
+
 ### [Disk Management](./Disk%20Management)
 - [Compress Image CLI](./Disk%20Management/compress_image_cli.md)
 - [NCDU Guide](./Disk%20Management/ncdu.md)
