@@ -41,7 +41,9 @@ jobs:
           python-version: '3.12'
 
       - name: Install Dependencies
-        run: pip install google-genai
+        run: |
+          pip uninstall -y google-generativeai || true
+          pip install google-genai
 
       - name: Update Note with Gemini
         id: update_note
