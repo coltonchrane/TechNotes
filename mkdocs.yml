@@ -13,14 +13,20 @@ theme:
     - search.suggest
     - search.highlight
 
-# Source files directory
-docs_dir: docs
+# Use the root as the documentation source
+docs_dir: .
 
 # Files to exclude from the built site
 exclude_docs: |
+  .git/*
+  .github/*
+  scripts/*
   *.py
   *.sh
   *.json
+  .gitignore
+  mkdocs.yml
+  requirements.txt
 
 # Auto-discover the rest based on folder structure
 # (MkDocs will use directory names for navigation)
