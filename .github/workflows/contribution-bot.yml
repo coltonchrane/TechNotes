@@ -1,0 +1,51 @@
+name: Contribution Bot
+on:
+  issues:
+    types: [labeled]
+
+jobs:
+  create-note:
+    if: github.event.label.name == 'contribution'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Create Note from Issue
+        id: create_note
+        env:
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_AUTHOR: ${{ github.event.issue.user.login }}
+        run: |
+          chmod +x scripts/issue_to_note.sh
+          ./scripts/issue_to_note.sh "$ISSUE_TITLE" "$ISSUE_BODY" "$ISSUE_NUMBER" "$ISSUE_AUTHOR"
+          
+          # Check if a new file was created
+          git add .
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          
+          git commit -m "docs: add note from issue #${ISSUE_NUMBER}"
+          git push
+
+      - name: Close Issue
+        if: success()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          gh issue comment $ISSUE_NUMBER --body "Successfully converted this issue to a note! 🎉"
+          gh issue close $ISSUE_NUMBER
