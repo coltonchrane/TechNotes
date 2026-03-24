@@ -1,4 +1,4 @@
-A collection of technical notes generated using Gemini AI
+A curated knowledge base powered by Gemini.
 <details open>
 <summary><b><span style="font-size: 2em;">📖 Table of Contents</span></b></summary>
 
