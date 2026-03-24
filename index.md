@@ -34,6 +34,8 @@ This repository uses a **Gemini AI-powered bot** to streamline contributions.
 
 - [Flashing Ubuntu 25 on a Dell Laptop](./Linux/flashing-ubuntu-25-on-dell.md)
 
+- [Fixing wkhtmltopdf Installation on Linux](./Linux/wkhtmltopdf_installation_fix.md)
+
 ### [Recipes](./Recipes)
 - [How to Make Chicken Fried Steak with Sides](./Recipes/chicken_fried_steak_with_sides.md)
 - [Professional-Grade Fajitas with Citrus-Aromatics Marinade](./Recipes/fajita_marinade_and_preparation_guide.md)
