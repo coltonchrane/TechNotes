@@ -22,10 +22,10 @@ SLUG=$(echo "$CLEAN_TITLE" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9 ]//g' 
 FILENAME="${SLUG}.md"
 
 # 3. Create the directory if it doesn't exist
-mkdir -p "$CATEGORY"
+mkdir -p "docs/$CATEGORY"
 
 # 4. Construct the note content with metadata
-cat <<EOF > "${CATEGORY}/${FILENAME}"
+cat <<EOF > "docs/${CATEGORY}/${FILENAME}"
 ---
 title: ${CLEAN_TITLE}
 date: ${ISSUE_DATE}
@@ -36,4 +36,4 @@ issue: https://github.com/coltonchrane/TechNotes/issues/${ISSUE_NUMBER}
 ${ISSUE_BODY}
 EOF
 
-echo "Created ${CATEGORY}/${FILENAME}"
+echo "Created docs/${CATEGORY}/${FILENAME}"

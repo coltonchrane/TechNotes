@@ -83,9 +83,11 @@ Example Output format:
         content = data.get("content", "")
 
         # Create directory if it doesn't exist
-        os.makedirs(category, exist_ok=True)
+        docs_dir = "docs"
+        category_dir = os.path.join(docs_dir, category)
+        os.makedirs(category_dir, exist_ok=True)
         
-        file_path = os.path.join(category, filename)
+        file_path = os.path.join(category_dir, filename)
         
         with open(file_path, "w", encoding="utf-8") as f:
             f.write(content)
@@ -93,7 +95,7 @@ Example Output format:
         print(f"Successfully generated note at {file_path}")
 
         # --- README.md Update Logic ---
-        readme_path = "README.md"
+        readme_path = os.path.join(docs_dir, "index.md")
         if os.path.exists(readme_path):
             with open(readme_path, "r", encoding="utf-8") as f:
                 readme_content = f.read()
