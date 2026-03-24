@@ -11,4 +11,6 @@ nav_order: 9
 
 - [Flashing Ubuntu 25 on a Dell Laptop](./flashing-ubuntu-25-on-dell.md)
 
+- [Fixing wkhtmltopdf Installation on Linux](./wkhtmltopdf_installation_fix.md)
+
 [Back to Home](../index.md)
