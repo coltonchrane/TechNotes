@@ -1,3 +1,8 @@
+---
+layout: default
+title: NCDU
+---
+
 # ncdu (NCurses Disk Usage) Guide
 
 `ncdu` is a disk usage analyzer with an ncurses interface. It is designed to find space hogs on a remote server where you don't have an entire graphical setup, but it is useful even on regular desktop systems.

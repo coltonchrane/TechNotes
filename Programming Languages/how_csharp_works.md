@@ -1,4 +1,5 @@
 ---
+layout: default
 title: How C# Works
 date: 2026-03-24
 author: coltonchrane

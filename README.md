@@ -1,71 +1,21 @@
-A curated knowledge base powered by Gemini.
-<details open>
-<summary><b><span style="font-size: 2em;">📖 Table of Contents</span></b></summary>
+# A curated knowledge base powered by Gemini.
 
-[Programming Languages](./Programming%20Languages)
-- [How C# Works](./Programming%20Languages/how_csharp_works.md)
-
-[Disk Management](./Disk%20Management)
-- [Compress Image CLI](./Disk%20Management/compress_image_cli.md)
-- [NCDU Guide](./Disk%20Management/ncdu.md)
-- [Ubuntu 25 Cleanup](./Disk%20Management/ubuntu_25_cleanup.md)
-
-[Docker](./Docker)
-- [Docker Cleanup Guide](./Docker/docker_cleanup_guide.md)
-- [Docker File Watching](./Docker/docker_file_watching.md)
-
-[Markdown](./Markdown)
-- [GitHub Emojis](./Markdown/github_emojis.md)
-- [Markdown Guide](./Markdown/markdown_guide.md)
-
-[Networking](./Networking)
-- [Docker Run in Production](./Networking/docker_run_in_prod.md)
-- [LXC Run in Production](./Networking/lxc_run_in_prod.md)
-- [SSH Setup Guide](./Networking/ssh_setup_guide.md)
-- [VPN Setup Guide](./Networking/vpn_setup_guide.md)
-</details>
-
-<details open>
-<summary><b><span style="font-size: 2em;">🚀 Features</span></b></summary>
+## 🚀 Features
 
 - **AI-Powered Note Generation**: Automatically converts GitHub issues into formatted markdown notes using Gemini AI.
 - **Automated Refinement**: Bot-driven updates to notes via PR comments.
 - **Easy Categorization**: Automatically organizes notes into logical directories.
-</details>
 
-<details>
-<summary><b><span style="font-size: 2em;">📂 Project Structure</span></b></summary>
-
-```text
-.
-├── Disk Management/      # Storage, cleanup, and image compression
-├── Docker/               # Containerization and orchestration
-├── Markdown/             # Guides and references for markdown
-├── Networking/           # Connectivity, SSH, and VPN guides
-├── scripts/              # Automation tools and AI-driven generators
-└── .github/workflows/    # CI/CD pipelines for note generation and PR fixing
-```
-</details>
-
-<details>
-<summary><b><span style="font-size: 2em;">🤖 Automation & Tools</span></b></summary>
+## 🤖 Automation & Tools
 
 This repository uses a **Gemini AI-powered bot** to streamline contributions.
 
 - **`gemini_note_generator.py`**: A Python script that uses Gemini AI (`gemini-3-flash-preview`) to transform raw issue text into clean, structured markdown.
 - **`gemini_pr_fixer.py`**: Handles iterative refinements based on PR comments.
 - **`issue_to_note.sh`**: A shell utility for basic issue-to-note conversion.
-</details>
 
-<details>
-<summary><b><span style="font-size: 2em;">🤝 Contributing</span></b></summary>
+## 🤝 Contributing
 
 We welcome new notes! This repository uses a **Gemini AI-powered bot** to help turn GitHub Issues into formatted technical notes. You don't even need to touch the code—just open an issue.
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md) for full details on how to contribute and how the automation works.
-</details>
-
-
-
-### [Cooking](./Cooking)
-- [Classic Spaghetti Bolognese Guide](./Cooking/classic_spaghetti_bolognese.md)

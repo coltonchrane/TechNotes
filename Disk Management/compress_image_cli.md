@@ -1,3 +1,8 @@
+---
+layout: default
+title: Compress Image CLI
+---
+
 # Compressing JPGs to 1MB using jpegoptim
 
 ### The jpegoptim utility is the most direct way to hit a target file size on Ubuntu because it automatically calculates the necessary compression levels for you.

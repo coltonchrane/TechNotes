@@ -24,9 +24,10 @@ FILENAME="${SLUG}.md"
 # 3. Create the directory if it doesn't exist
 mkdir -p "$CATEGORY"
 
-# 4. Construct the note content with metadata
+# Construct the note content with metadata
 cat <<EOF > "${CATEGORY}/${FILENAME}"
 ---
+layout: default
 title: ${CLEAN_TITLE}
 date: ${ISSUE_DATE}
 author: ${ISSUE_AUTHOR}
@@ -37,3 +38,28 @@ ${ISSUE_BODY}
 EOF
 
 echo "Created ${CATEGORY}/${FILENAME}"
+
+# 5. Update index.md
+INDEX_FILE="index.md"
+if [ -f "$INDEX_FILE" ]; then
+    NOTE_LINK="- [${CLEAN_TITLE}](./${CATEGORY}/${FILENAME})"
+    
+    # Check if category header exists
+    CATEGORY_HEADER="### [${CATEGORY}](./${CATEGORY})"
+    
+    if grep -qF "$CATEGORY_HEADER" "$INDEX_FILE"; then
+        # Category exists, append note link after the header
+        sed -i "/$(echo "$CATEGORY_HEADER" | sed 's/[][\.*^$/]/\\&/g')/a ${NOTE_LINK}" "$INDEX_FILE"
+        echo "Updated ${INDEX_FILE} with new note link in existing category."
+    else
+        # Category doesn't exist, append new category and link after Table of Contents
+        TOC_MARKER="## 📖 Table of Contents"
+        if grep -qF "$TOC_MARKER" "$INDEX_FILE"; then
+            sed -i "/$TOC_MARKER/a \\\\n### [${CATEGORY}](./${CATEGORY})\\n${NOTE_LINK}" "$INDEX_FILE"
+            echo "Updated ${INDEX_FILE} with new category and note link."
+        else
+            echo -e "\n\n### [${CATEGORY}](./${CATEGORY})\n${NOTE_LINK}" >> "$INDEX_FILE"
+            echo "Appended new category and note link to end of ${INDEX_FILE}."
+        fi
+    fi
+fi

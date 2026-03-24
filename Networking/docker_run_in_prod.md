@@ -1,3 +1,8 @@
+---
+layout: default
+title: Docker Run In Prod
+---
+
 # Ubuntu Production Deployment Guide (Docker)
 **Environment:** Ubuntu 22.04/24.04 LTS | Proxmox VM | Residential ISP
 **Stack:** React (Vite) + Kotlin Micronaut + PostgreSQL
