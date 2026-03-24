@@ -1,5 +1,5 @@
 # Site settings
-title: Gemini Tech Notes
+title: AutoNotes
 description: A curated knowledge base powered by Gemini AI.
 
 # Theme settings
@@ -15,4 +15,4 @@ plugins:
 # This ensures the search works correctly on GitHub Pages
 aux_links:
   "Gemini Tech Notes on GitHub":
-    - "https://github.com/coltonchrane/TechNotes"
+    - "https://github.com/coltonchrane/AutoNotes"

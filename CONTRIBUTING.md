@@ -1,10 +1,10 @@
-# Contributing to TechNotes
+# Contributing to AutoNotes
 
 We welcome new notes! This repository uses a **Gemini AI-powered bot** to help turn GitHub Issues into formatted technical notes. You don't even need to touch the code—just open an issue.
 
 ## 🚀 Quick Start for Contributors
 
-1.  **Create a New Issue**: Use the [New Issue](https://github.com/coltonchrane/TechNotes/issues/new) button.
+1.  **Create a New Issue**: Use the [New Issue](https://github.com/coltonchrane/AutoNotes/issues/new) button.
 2.  **Format the Title**: Use the format `[Category] Title of your note`. 
     *   *Example: `[Docker] How to clean up unused volumes`*
     *   If you omit the category, Gemini will try to suggest a logical one.

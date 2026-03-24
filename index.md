@@ -1,9 +1,7 @@
 ---
 layout: default
-title: Home
+title: AutoNotes
 ---
-
-# Gemini Tech Notes
 
 A curated knowledge base powered by Gemini AI.
 
