@@ -29,6 +29,9 @@ This repository uses a **Gemini AI-powered bot** to streamline contributions.
 
 ## 📖 Table of Contents
 
+### [Recipes](./Recipes)
+- [Professional-Grade Fajitas with Citrus-Aromatics Marinade](./Recipes/fajita_marinade_and_preparation_guide.md)
+
 ### [Programming Languages](./Programming_Languages)
 - [How C# Works](./Programming_Languages/how_csharp_works.md)
 
