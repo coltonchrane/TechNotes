@@ -19,6 +19,13 @@ Once the `contribution` label is added:
 3.  **Pull Request**: The bot creates a new branch (e.g., `contribution/issue-123`) and opens a Pull Request with the new `.md` file.
 4.  **Notification**: The bot comments on your issue with a link to the Pull Request for your review.
 
+### 🔄 Refinement Loop
+
+If the generated note isn't quite right, you can refine it directly in the Pull Request:
+1.  **Leave a Comment**: Simply reply to the Pull Request with your feedback (e.g., "Please add a section on X" or "Fix the code example in the second paragraph").
+2.  **Bot Update**: The bot will automatically pick up your comment, send it to Gemini along with the current content, and commit the updated version back to the Pull Request branch.
+3.  **Reaction**: The bot will add a 🚀 reaction to your comment when the update is complete.
+
 ## 🛠️ Repository Setup (For Maintainers)
 
 To ensure the bot functions correctly, the following must be configured in the GitHub repository:

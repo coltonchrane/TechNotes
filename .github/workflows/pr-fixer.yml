@@ -1,0 +1,77 @@
+name: PR Fixer
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  fix-pr:
+    # Trigger only if it's a comment on a PR
+    if: github.event.issue.pull_request != null
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: read
+      issues: write
+
+    steps:
+      - name: Get PR Info
+        id: pr_info
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          PR_DATA=$(gh pr view ${{ github.event.issue.number }} --json headRefName,files)
+          echo "HEAD_REF=$(echo $PR_DATA | jq -r .headRefName)" >> $GITHUB_ENV
+          
+          # Find the first .md file that was changed
+          MD_FILE=$(echo $PR_DATA | jq -r '.files[] | select(.path | endswith(".md")) | .path' | head -n 1)
+          if [ -z "$MD_FILE" ]; then
+            echo "No markdown file found in this PR."
+            exit 1
+          fi
+          echo "MD_FILE=$MD_FILE" >> $GITHUB_ENV
+
+      - name: Checkout PR Branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.HEAD_REF }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Dependencies
+        run: pip install google-generativeai
+
+      - name: Update Note with Gemini
+        id: update_note
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          FILE_PATH: ${{ env.MD_FILE }}
+          COMMENT_BODY: ${{ github.event.comment.body }}
+        run: |
+          chmod +x scripts/gemini_pr_fixer.py
+          python scripts/gemini_pr_fixer.py
+
+      - name: Commit and Push
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add "${{ env.MD_FILE }}"
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git commit -m "docs: (Gemini Refinement) update ${{ env.MD_FILE }} based on PR comment"
+          git push
+
+      - name: React to Comment
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh api \
+            --method POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            /repos/${{ github.repository }}/issues/comments/${{ github.event.comment.id }}/reactions \
+            -f "content=rocket"
