@@ -66,3 +66,7 @@ We welcome new notes! This repository uses a **Gemini AI-powered bot** to help t
 See [CONTRIBUTING.md](./CONTRIBUTING.md) for full details on how to contribute and how the automation works.
 </details>
 
+
+
+### [GitHub](./GitHub)
+- [Setting Up GitHub Pages for Markdown Repositories](./GitHub/github_pages_markdown_setup.md)
