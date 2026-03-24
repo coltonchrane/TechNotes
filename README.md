@@ -1,5 +1,4 @@
-A collection of technical notes, guides, and quick-reference documentation for various IT and development topics.
-
+A collection of technical notes generated using Gemini AI
 <details open>
 <summary><b><span style="font-size: 2em;">📖 Table of Contents</span></b></summary>
 
