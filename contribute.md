@@ -27,55 +27,48 @@ Submit your technical guides or raw notes below. Our **Gemini AI Bot** will auto
     <textarea id="content" rows="10" placeholder="Paste your raw notes, terminal output, or full guide here..." style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid #ccc; background-color: #2e3440; color: #eceff4; font-family: monospace;"></textarea>
   </div>
 
-  <button type="button" id="submit-btn" style="background-color: #5e81ac; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; font-weight: bold;">
+  <a href="javascript:void(0)" id="submit-btn" onclick="submitNote()" style="display: inline-block; background-color: #5e81ac; color: white; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-size: 16px; font-weight: bold; text-decoration: none;">
     Generate Note with AI 🤖
-  </button>
+  </a>
 </div>
 
 <script type="text/javascript">
-(function() {
-  const submitBtn = document.getElementById('submit-btn');
-  if (!submitBtn) return;
+function submitNote() {
+  const category = document.getElementById('category').value;
+  const title = document.getElementById('title').value;
+  const content = document.getElementById('content').value;
 
-  submitBtn.addEventListener('click', function(e) {
-    e.preventDefault();
-    const category = document.getElementById('category').value;
-    const title = document.getElementById('title').value;
-    const content = document.getElementById('content').value;
+  if (!title || !content) {
+    alert('Please provide both a title and content for your note.');
+    return;
+  }
 
-    if (!title || !content) {
-      alert('Please provide both a title and content for your note.');
-      return;
-    }
-
-    const fullTitle = category ? `[${category}] ${title}` : title;
-    const issueBody = `## Content\n${content}`;
-    const labels = 'contribution';
-    
-    // Construct the GitHub New Issue URL
-    const repoUrl = 'https://github.com/coltonchrane/AutoNotes/issues/new';
-    const params = new URLSearchParams({
-      template: 'contribution.md',
-      title: fullTitle,
-      body: issueBody,
-      labels: labels
-    });
-
-    const finalUrl = `${repoUrl}?${params.toString()}`;
-    
-    // Use location.href instead of window.open to avoid popup blockers
-    window.location.href = finalUrl;
-    
-    // Provide some feedback on the page as a fallback
-    document.getElementById('contribution-form').innerHTML = `
-      <div style="padding: 20px; background-color: #434c5e; border-radius: 8px; border: 1px solid #5e81ac; margin-top: 20px;">
-        <h3>🚀 Redirecting...</h3>
-        <p>If you are not redirected automatically, <a href="${finalUrl}" target="_blank" style="color: #88c0d0; text-decoration: underline;">click here to open the GitHub Issue</a>.</p>
-        <p>Once the issue page opens, <strong>please click "Submit new issue"</strong> to start the AI automation.</p>
-      </div>
-    `;
+  const fullTitle = category ? `[${category}] ${title}` : title;
+  const issueBody = `## Content\n${content}`;
+  
+  // Construct the GitHub New Issue URL
+  const repoUrl = 'https://github.com/coltonchrane/AutoNotes/issues/new';
+  const params = new URLSearchParams({
+    template: 'contribution.md',
+    title: fullTitle,
+    body: issueBody,
+    labels: 'contribution'
   });
-})();
+
+  const finalUrl = `${repoUrl}?${params.toString()}`;
+  
+  // Provide some feedback on the page
+  document.getElementById('contribution-form').innerHTML = `
+    <div style="padding: 20px; background-color: #434c5e; border-radius: 8px; border: 1px solid #5e81ac; margin-top: 20px;">
+      <h3>🚀 Redirecting...</h3>
+      <p>If you are not redirected automatically, <a href="${finalUrl}" target="_blank" style="color: #88c0d0; text-decoration: underline;">click here to open the GitHub Issue</a>.</p>
+      <p>Once the issue page opens, <strong>please click "Submit new issue"</strong> to start the AI automation.</p>
+    </div>
+  `;
+
+  // Perform the redirection
+  window.location.href = finalUrl;
+}
 </script>
 
 ---
