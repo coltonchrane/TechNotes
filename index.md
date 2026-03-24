@@ -32,6 +32,8 @@ This repository uses a **Gemini AI-powered bot** to streamline contributions.
 ### [Linux](./Linux)
 - [Converting Markdown to PDF on Ubuntu using Pandoc](./Linux/convert-markdown-to-pdf-pandoc.md)
 
+- [Flashing Ubuntu 25 on a Dell Laptop](./Linux/flashing-ubuntu-25-on-dell.md)
+
 ### [Recipes](./Recipes)
 - [How to Make Chicken Fried Steak with Sides](./Recipes/chicken_fried_steak_with_sides.md)
 - [Professional-Grade Fajitas with Citrus-Aromatics Marinade](./Recipes/fajita_marinade_and_preparation_guide.md)
