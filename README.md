@@ -65,3 +65,7 @@ We welcome new notes! This repository uses a **Gemini AI-powered bot** to help t
 See [CONTRIBUTING.md](./CONTRIBUTING.md) for full details on how to contribute and how the automation works.
 </details>
 
+
+
+### [Cooking](./Cooking)
+- [Classic Spaghetti Bolognese Guide](./Cooking/classic_spaghetti_bolognese.md)
