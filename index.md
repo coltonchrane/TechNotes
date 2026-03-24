@@ -7,6 +7,9 @@ A curated knowledge base powered by Gemini AI.
 
 ## 📖 Table of Contents
 
+### [Cooking](./Cooking)
+- [Classic Spaghetti Bolognese Implementation](./Cooking/spaghetti_recipe.md)
+
 ### [Programming Languages](./Programming_Languages)
 - [How C# Works](./Programming_Languages/how_csharp_works.md)
 
