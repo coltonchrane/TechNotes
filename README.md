@@ -1,7 +1,7 @@
 A collection of technical notes, guides, and quick-reference documentation for various IT and development topics.
 
 <details open>
-<summary><b><font size="5">📖 Table of Contents</font></b></summary>
+<summary><b><span style="font-size: 2em;">📖 Table of Contents</span></b></summary>
 
 [Programming Languages](./Programming%20Languages)
 - [How C# Works](./Programming%20Languages/how_csharp_works.md)
@@ -27,7 +27,7 @@ A collection of technical notes, guides, and quick-reference documentation for v
 </details>
 
 <details open>
-<summary><b><font size="5">🚀 Features</font></b></summary>
+<summary><b><span style="font-size: 2em;">🚀 Features</span></b></summary>
 
 - **AI-Powered Note Generation**: Automatically converts GitHub issues into formatted markdown notes using Gemini AI.
 - **Automated Refinement**: Bot-driven updates to notes via PR comments.
@@ -35,7 +35,7 @@ A collection of technical notes, guides, and quick-reference documentation for v
 </details>
 
 <details>
-<summary><b><font size="5">📂 Project Structure</font></b></summary>
+<summary><b><span style="font-size: 2em;">📂 Project Structure</span></b></summary>
 
 ```text
 .
@@ -49,7 +49,7 @@ A collection of technical notes, guides, and quick-reference documentation for v
 </details>
 
 <details>
-<summary><b><font size="5">🤖 Automation & Tools</font></b></summary>
+<summary><b><span style="font-size: 2em;">🤖 Automation & Tools</span></b></summary>
 
 This repository uses a **Gemini AI-powered bot** to streamline contributions.
 
@@ -59,7 +59,7 @@ This repository uses a **Gemini AI-powered bot** to streamline contributions.
 </details>
 
 <details>
-<summary><b><font size="5">🤝 Contributing</font></b></summary>
+<summary><b><span style="font-size: 2em;">🤝 Contributing</span></b></summary>
 
 We welcome new notes! This repository uses a **Gemini AI-powered bot** to help turn GitHub Issues into formatted technical notes. You don't even need to touch the code—just open an issue.
 
