@@ -38,7 +38,6 @@ Submit your technical guides or raw notes below. Our **Gemini AI Bot** will auto
 </div>
 
 <script type="text/javascript">
-  // Wait for the DOM to be ready
 document.addEventListener('DOMContentLoaded', function() {
   const btn = document.getElementById('submit-btn');
   if (btn) {
@@ -60,7 +59,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const fullTitle = category ? `[${category}] ${title}` : title;
     const issueBody = `## Content\n${content}`;
     
-    // Construct the GitHub New Issue URL
     const repoUrl = 'https://github.com/coltonchrane/AutoNotes/issues/new';
     const params = new URLSearchParams({
       template: 'contribution.md',
@@ -71,7 +69,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const finalUrl = `${repoUrl}?${params.toString()}`;
     
-    // Provide some feedback on the page
     document.getElementById('contribution-form').innerHTML = `
       <div style="padding: 20px; background-color: #434c5e; border-radius: 8px; border: 1px solid #5e81ac; margin-top: 20px;">
         <h3>🚀 Redirecting...</h3>
@@ -80,11 +77,9 @@ document.addEventListener('DOMContentLoaded', function() {
       </div>
     `;
 
-    // Perform the redirection
     window.location.href = finalUrl;
   }
 
-  // Also expose to window just in case
   window.submitNote = submitNote;
 })();
 </script>
