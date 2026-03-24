@@ -32,19 +32,27 @@ Submit your technical guides or raw notes below. Our **Gemini AI Bot** will auto
     <textarea id="content" rows="10" placeholder="Paste your raw notes, terminal output, or full guide here..." style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid #ccc; background-color: #2e3440; color: #eceff4; font-family: monospace;"></textarea>
   </div>
 
-  <a href="javascript:void(0)" id="submit-btn" style="display: inline-block; background-color: #5e81ac; color: white; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-size: 16px; font-weight: bold; text-decoration: none;">
+  <button id="submit-btn" style="display: inline-block; background-color: #5e81ac; color: white; padding: 10px 20px; border-radius: 4px; border: none; cursor: pointer; font-size: 16px; font-weight: bold; text-decoration: none;">
     Generate Note with AI 🤖
-  </a>
+  </button>
 </div>
 
 <script type="text/javascript">
+  // Wait for the DOM to be ready
+document.addEventListener('DOMContentLoaded', function() {
+  const btn = document.getElementById('submit-btn');
+  if (btn) {
+    btn.addEventListener('click', submitNote);
+  }
+});
+
 (function() {
   function submitNote() {
     const category = document.getElementById('category').value;
     const title = document.getElementById('title').value;
     const content = document.getElementById('content').value;
 
-    if (!title || !content) {
+    if (!title) {
       alert('Please provide both a title and content for your note.');
       return;
     }
@@ -75,14 +83,6 @@ Submit your technical guides or raw notes below. Our **Gemini AI Bot** will auto
     // Perform the redirection
     window.location.href = finalUrl;
   }
-
-  // Wait for the DOM to be ready
-  document.addEventListener('DOMContentLoaded', function() {
-    const btn = document.getElementById('submit-btn');
-    if (btn) {
-      btn.addEventListener('click', submitNote);
-    }
-  });
 
   // Also expose to window just in case
   window.submitNote = submitNote;
