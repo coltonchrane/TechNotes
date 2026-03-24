@@ -7,14 +7,14 @@ nav_order: 1
 
 # Converting Markdown to PDF on Ubuntu using Pandoc
 
-This guide provides a comprehensive walkthrough for using the Pandoc command-line interface (CLI) to transform Markdown (.md) files into professionally formatted PDF documents on Ubuntu.
+This guide provides a comprehensive walkthrough for using the Pandoc command-line interface (CLI) to transform Markdown (.md) files into professionally formatted PDF documents on Ubuntu. While LaTeX is the traditional engine for this process, Pandoc also supports HTML-based engines like wkhtmltopdf and WeasyPrint, which allow for styling via CSS.
 
 ## 1. Installation
 
-Pandoc is a versatile document converter, but it requires a PDF engine (such as LaTeX) to generate PDF files. 
+Pandoc is a versatile document converter, but it requires an external PDF engine to generate PDF files. You can choose between a LaTeX distribution or HTML-based renderers.
 
 ### Installing Pandoc
-First, update your package list and install Pandoc using the apt package manager:
+First, update your package list and install Pandoc:
 
 ```bash
 sudo apt update
@@ -22,52 +22,74 @@ sudo apt install pandoc
 ```
 
 ### Installing a PDF Engine
-The most reliable way to generate PDFs with Pandoc is by installing a LaTeX distribution. For most users, the `texlive-latex-recommended` package is sufficient:
+Depending on your needs, install one or more of the following engines:
 
+**Option A: LaTeX (Recommended for academic/scientific papers)**
+LaTeX provides high-quality typesetting and is the most common choice for Pandoc.
 ```bash
 sudo apt install texlive-latex-base texlive-fonts-recommended texlive-latex-extra
 ```
 
+**Option B: wkhtmltopdf (Recommended for simple HTML-like rendering)**
+This engine uses the WebKit rendering engine to convert HTML to PDF.
+```bash
+sudo apt install wkhtmltopdf
+```
+
+**Option C: WeasyPrint (Recommended for modern CSS layout support)**
+WeasyPrint is a visual rendering engine for HTML and CSS that can export to PDF.
+```bash
+sudo apt install weasyprint
+```
+
 ## 2. Basic Conversion
 
-Once the dependencies are installed, you can perform a basic conversion using a single command in your terminal.
+Once the dependencies are installed, you can perform a basic conversion. If you have multiple engines installed, you can specify which one to use.
 
-### Running the Command
+### Default Conversion (LaTeX)
 Navigate to the folder containing your Markdown file and run:
-
 ```bash
 pandoc input.md -o output.pdf
 ```
 
-In this example:
-- `input.md` is the source file.
-- `-o` stands for output.
-- `output.pdf` is the name of the file you wish to create.
+### Conversion Using a Specific Engine
+To use an alternative engine like `wkhtmltopdf` or `weasyprint`, use the `--pdf-engine` flag:
+```bash
+# Using wkhtmltopdf
+pandoc input.md --pdf-engine=wkhtmltopdf -o output.pdf
+
+# Using WeasyPrint
+pandoc input.md --pdf-engine=weasyprint -o output.pdf
+```
 
 ## 3. Advanced Customization
 
-Pandoc allows you to customize the output by adding flags to the command.
+Pandoc allows you to customize the output by adding flags to the command, though the available flags may change depending on your chosen engine.
 
 ### Adding a Table of Contents
-To automatically generate a Table of Contents (TOC) based on your Markdown headers, use the `--toc` flag:
-
+To automatically generate a Table of Contents (TOC) based on your Markdown headers:
 ```bash
 pandoc input.md --toc -o output.pdf
 ```
 
-### Adjusting Margins and Paper Size
-You can pass variables to the LaTeX engine to modify the document layout. For example, to set 1-inch margins and use A4 paper size:
-
+### Layout Customization (LaTeX Only)
+If using the default LaTeX engine, you can pass variables to modify the document layout, such as margins and paper size:
 ```bash
 pandoc input.md -V geometry:margin=1in -V papersize:a4 -o output.pdf
 ```
 
-### Using Alternative PDF Engines
-If you prefer not to use LaTeX, you can use other engines like `wkhtmltopdf` or `weasyprint`, provided they are installed on your system:
-
+### Styling with CSS (wkhtmltopdf and WeasyPrint)
+A major advantage of using HTML-based engines is the ability to style your document using standard CSS. Create a `style.css` file and apply it during conversion:
 ```bash
-pandoc input.md --pdf-engine=wkhtmltopdf -o output.pdf
+pandoc input.md --css style.css --pdf-engine=weasyprint -o output.pdf
+```
+
+### Metadata and Headers
+You can include metadata such as title and author directly in the command or via a YAML front matter block at the top of your Markdown file:
+```bash
+pandoc input.md --metadata title="My Document" --metadata author="John Doe" -o output.pdf
 ```
 
 ---
 **Source:** [GitHub Issue #23](https://github.com/coltonchrane/TechNotes/issues/23) | **Contributor:** @coltonchrane
+---
