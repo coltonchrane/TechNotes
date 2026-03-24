@@ -3,23 +3,23 @@ A collection of technical notes, guides, and quick-reference documentation for v
 <details open>
 <summary><b><font size="5">📖 Table of Contents</font></b></summary>
 
-### [Programming Languages](./Programming%20Languages)
+[Programming Languages](./Programming%20Languages)
 - [How C# Works](./Programming%20Languages/how_csharp_works.md)
 
-### [Disk Management](./Disk%20Management)
+[Disk Management](./Disk%20Management)
 - [Compress Image CLI](./Disk%20Management/compress_image_cli.md)
 - [NCDU Guide](./Disk%20Management/ncdu.md)
 - [Ubuntu 25 Cleanup](./Disk%20Management/ubuntu_25_cleanup.md)
 
-### [Docker](./Docker)
+[Docker](./Docker)
 - [Docker Cleanup Guide](./Docker/docker_cleanup_guide.md)
 - [Docker File Watching](./Docker/docker_file_watching.md)
 
-### [Markdown](./Markdown)
+[Markdown](./Markdown)
 - [GitHub Emojis](./Markdown/github_emojis.md)
 - [Markdown Guide](./Markdown/markdown_guide.md)
 
-### [Networking](./Networking)
+[Networking](./Networking)
 - [Docker Run in Production](./Networking/docker_run_in_prod.md)
 - [LXC Run in Production](./Networking/lxc_run_in_prod.md)
 - [SSH Setup Guide](./Networking/ssh_setup_guide.md)

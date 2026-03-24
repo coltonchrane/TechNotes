@@ -49,5 +49,3 @@ Create a label named `contribution` (Case-sensitive) in the **Issues** > **Label
 ## 📂 File Structure
 Generated notes are placed in directories based on the category (e.g., `Networking/`, `Linux/`). If a category doesn't exist, the bot will create it automatically.
 
----
-*Last Updated: March 23, 2026*
