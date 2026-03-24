@@ -9,6 +9,4 @@ nav_order: 2
 
 Technical notes on various programming languages.
 
-- [How C# Works](./how_csharp_works.md)
-
 [Back to Home](../index.md)
