@@ -2,7 +2,7 @@
 import os
 import sys
 import json
-import google.generativeai as genai
+from google import genai
 
 def main():
     api_key = os.environ.get("GEMINI_API_KEY")
@@ -24,8 +24,7 @@ def main():
     with open(file_path, "r", encoding="utf-8") as f:
         current_content = f.read()
 
-    genai.configure(api_key=api_key)
-    model = genai.GenerativeModel('gemini-1.5-flash')
+    client = genai.Client(api_key=api_key)
 
     prompt = f"""
 You are a technical documentation assistant. I have a technical note that needs refinement based on a user's feedback.
@@ -45,7 +44,10 @@ Please update the technical note based on the feedback.
 """
 
     try:
-        response = model.generate_content(prompt)
+        response = client.models.generate_content(
+            model='gemini-1.5-flash',
+            contents=prompt
+        )
         updated_content = response.text.strip()
         
         # Clean up any potential markdown code block markers

@@ -3,7 +3,7 @@ import os
 import sys
 import json
 import re
-import google.generativeai as genai
+from google import genai
 from datetime import datetime
 
 def main():
@@ -22,10 +22,7 @@ def main():
         print("Error: ISSUE_TITLE environment variable not set.")
         sys.exit(1)
 
-    genai.configure(api_key=api_key)
-    
-    # We will use the latest gemini-1.5-flash model
-    model = genai.GenerativeModel('gemini-1.5-flash')
+    client = genai.Client(api_key=api_key)
 
     prompt = f"""
 You are a technical documentation assistant. I have a GitHub issue that needs to be converted into a markdown note for my 'TechNotes' repository.
@@ -55,7 +52,10 @@ Example Output format:
 """
 
     try:
-        response = model.generate_content(prompt)
+        response = client.models.generate_content(
+            model='gemini-1.5-flash',
+            contents=prompt
+        )
         text = response.text.strip()
         
         # In case the model still outputs markdown blocks, strip them
