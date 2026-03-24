@@ -24,6 +24,8 @@ def main():
     with open(file_path, "r", encoding="utf-8") as f:
         current_content = f.read()
 
+    model_name = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash-lite")
+
     client = genai.Client(api_key=api_key)
 
     prompt = f"""
@@ -45,7 +47,7 @@ Please update the technical note based on the feedback.
 
     try:
         response = client.models.generate_content(
-            model='gemini-2.0-flash',
+            model=model_name,
             contents=prompt
         )
         updated_content = response.text.strip()

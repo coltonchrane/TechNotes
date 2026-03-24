@@ -18,6 +18,8 @@ def main():
     issue_author = os.environ.get("ISSUE_AUTHOR", "")
     issue_date = datetime.now().strftime("%Y-%m-%d")
 
+    model_name = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash-lite")
+
     if not issue_title:
         print("Error: ISSUE_TITLE environment variable not set.")
         sys.exit(1)
@@ -53,7 +55,7 @@ Example Output format:
 
     try:
         response = client.models.generate_content(
-            model='gemini-2.0-flash',
+            model=model_name,
             contents=prompt
         )
         text = response.text.strip()
