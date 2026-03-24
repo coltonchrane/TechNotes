@@ -1,6 +1,8 @@
 ---
 layout: default
 title: GitHub Emojis
+parent: Markdown
+nav_order: 1
 ---
 
 # GitHub Emojis

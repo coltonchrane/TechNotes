@@ -1,6 +1,8 @@
 ---
 layout: default
 title: SSH Setup Guide
+parent: Networking
+nav_order: 3
 ---
 
 # SSH Server Setup and Connection Guide

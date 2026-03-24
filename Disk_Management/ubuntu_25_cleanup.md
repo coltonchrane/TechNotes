@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Ubuntu 25 Cleanup
+parent: Disk Management
+nav_order: 3
 ---
 
 # Ubuntu 25.04 Disk Cleanup Guide

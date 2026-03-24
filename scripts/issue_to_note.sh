@@ -27,11 +27,17 @@ FILENAME="${SLUG}.md"
 # 3. Create the directory if it doesn't exist
 mkdir -p "$SLUG_CATEGORY"
 
+# 4. Calculate nav_order for the note
+# Count existing .md files in the category directory (excluding index.md)
+NAV_ORDER=$(ls -1 "$SLUG_CATEGORY"/*.md 2>/dev/null | grep -v "index.md" | wc -l | xargs -I{} echo "{}+1" | bc)
+
 # Construct the note content with metadata
 cat <<EOF > "${SLUG_CATEGORY}/${FILENAME}"
 ---
 layout: default
 title: ${CLEAN_TITLE}
+parent: ${CATEGORY}
+nav_order: ${NAV_ORDER}
 date: ${ISSUE_DATE}
 author: ${ISSUE_AUTHOR}
 issue: https://github.com/coltonchrane/TechNotes/issues/${ISSUE_NUMBER}
@@ -64,5 +70,33 @@ if [ -f "$INDEX_FILE" ]; then
             echo -e "\n\n### [${CATEGORY}](./${SLUG_CATEGORY})\n${NOTE_LINK}" >> "$INDEX_FILE"
             echo "Appended new category and note link to end of ${INDEX_FILE}."
         fi
+    fi
+fi
+
+# 6. Ensure category index.md exists with navigation metadata
+CATEGORY_INDEX="${SLUG_CATEGORY}/index.md"
+if [ ! -f "$CATEGORY_INDEX" ]; then
+    # Calculate nav_order for category: count existing category index files + Home(1) + New(1)
+    CAT_NAV_ORDER=$(find . -maxdepth 2 -name "index.md" | grep -v "^./index.md" | wc -l | xargs -I{} echo "{}+2" | bc)
+    cat <<EOF > "$CATEGORY_INDEX"
+---
+layout: default
+title: ${CATEGORY}
+has_children: true
+nav_order: ${CAT_NAV_ORDER}
+---
+
+# ${CATEGORY}
+
+- [${CLEAN_TITLE}](./${FILENAME})
+
+[Back to Home](../index.md)
+EOF
+    echo "Created ${CATEGORY_INDEX} with navigation metadata"
+else
+    # Update existing category index (if not already there)
+    if ! grep -qF "./${FILENAME}" "$CATEGORY_INDEX"; then
+        # Insert after the H1 header
+        sed -i "/# ${CATEGORY}/a - [${CLEAN_TITLE}](./${FILENAME})" "$CATEGORY_INDEX"
     fi
 fi

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Docker Cleanup Guide
+parent: Docker
+nav_order: 1
 ---
 
 # Docker Disk Space Management Guide

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: VPN Setup Guide
+parent: Networking
+nav_order: 4
 ---
 
 # VPN Setup and Connection Guide (WireGuard)

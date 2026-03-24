@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Markdown Guide
+parent: Markdown
+nav_order: 2
 ---
 
 # Markdown Syntax Guide

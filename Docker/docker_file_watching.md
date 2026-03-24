@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Docker File Watching
+parent: Docker
+nav_order: 2
 ---
 
 # Implementing File Watching in Docker

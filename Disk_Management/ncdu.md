@@ -1,6 +1,8 @@
 ---
 layout: default
 title: NCDU
+parent: Disk Management
+nav_order: 2
 ---
 
 # ncdu (NCurses Disk Usage) Guide

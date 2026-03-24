@@ -1,6 +1,8 @@
 ---
 layout: default
 title: LXC Run In Prod
+parent: Networking
+nav_order: 2
 ---
 
 # Ubuntu Production Deployment Guide (LXC on Proxmox)

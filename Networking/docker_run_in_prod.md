@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Docker Run In Prod
+parent: Networking
+nav_order: 1
 ---
 
 # Ubuntu Production Deployment Guide (Docker)

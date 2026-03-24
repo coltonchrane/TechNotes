@@ -89,8 +89,15 @@ Example Output format:
         title_match = re.search(r"^#\s*(.*?)$", content, re.MULTILINE)
         note_title = title_match.group(1).strip() if title_match else filename.replace(".md", "").replace("_", " ").title()
 
-        # Prepend Jekyll front matter
-        front_matter = f"---\nlayout: default\ntitle: {note_title}\n---\n\n"
+        # --- CALCULATE NAV ORDER FOR NOTE ---
+        display_category = category.replace("_", " ")
+        nav_order = 1
+        if os.path.exists(category):
+            existing_notes = [f for f in os.listdir(category) if f.endswith(".md") and f != "index.md"]
+            nav_order = len(existing_notes) + 1
+
+        # Prepend Jekyll front matter with navigation metadata
+        front_matter = f"---\nlayout: default\ntitle: {note_title}\nparent: {display_category}\nnav_order: {nav_order}\n---\n\n"
         final_content = front_matter + content
 
         # Create directory if it doesn't exist
@@ -120,7 +127,6 @@ Example Output format:
                 print(f"Note link already exists in {index_path}. Skipping update.")
             else:
                 # Check if category section exists (Display name might still have spaces)
-                display_category = category.replace("_", " ")
                 category_header = f"### [{display_category}](./{encoded_category})"
                 
                 if category_header in index_content:
@@ -157,17 +163,17 @@ Example Output format:
                     toc_marker = "## 📖 Table of Contents"
                     if toc_marker in index_content:
                         insertion_point = index_content.find(toc_marker) + len(toc_marker)
-                        new_section = f"\n\n### [{category}](./{encoded_category})\n{note_link}"
+                        new_section = f"\n\n### [{display_category}](./{encoded_category})\n{note_link}"
                         updated_index_content = index_content[:insertion_point] + new_section + index_content[insertion_point:]
                     else:
                         # Fallback to appending before Features
                         features_marker = "## 🚀 Features"
                         if features_marker in index_content:
                             insertion_point = index_content.find(features_marker)
-                            new_section = f"### [{category}](./{encoded_category})\n{note_link}\n\n"
+                            new_section = f"### [{display_category}](./{encoded_category})\n{note_link}\n\n"
                             updated_index_content = index_content[:insertion_point] + new_section + index_content[insertion_point:]
                         else:
-                            updated_index_content = index_content + f"\n\n### [{category}](./{encoded_category})\n{note_link}"
+                            updated_index_content = index_content + f"\n\n### [{display_category}](./{encoded_category})\n{note_link}"
 
                 with open(index_path, "w", encoding="utf-8") as f:
                     f.write(updated_index_content)
@@ -193,6 +199,28 @@ Example Output format:
                     with open(category_index_path, "w", encoding="utf-8") as f:
                         f.write(updated_cat_content)
                     print(f"Successfully updated {category_index_path}")
+            else:
+                # Create new category index.md with navigation metadata
+                # Calculate nav_order for category: count existing category index files + Home(1)
+                existing_dirs = [d for d in os.listdir(".") if os.path.isdir(d) and os.path.exists(os.path.join(d, "index.md"))]
+                cat_nav_order = len(existing_dirs) + 2 # +1 for Home(1), +1 for the new one
+                
+                cat_index_content = f"""---
+layout: default
+title: {display_category}
+has_children: true
+nav_order: {cat_nav_order}
+---
+
+# {display_category}
+
+- [{note_title}](./{encoded_filename})
+
+[Back to Home](../index.md)
+"""
+                with open(category_index_path, "w", encoding="utf-8") as f:
+                    f.write(cat_index_content)
+                print(f"Successfully created {category_index_path} with navigation metadata")
             # -----------------------------
         # -----------------------------
         

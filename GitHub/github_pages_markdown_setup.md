@@ -1,6 +1,8 @@
 ---
 layout: default
 title: GitHub Pages Markdown Setup
+parent: GitHub
+nav_order: 1
 ---
 
 # Setting Up GitHub Pages for Markdown Repositories

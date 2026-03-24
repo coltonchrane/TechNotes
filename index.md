@@ -1,9 +1,9 @@
 ---
 layout: default
-title: AutoNotes
+title: Home
+nav_order: 1
+description: A generative knowledge base powered by Gemini AI.
 ---
-
-A curated knowledge base powered by Gemini AI.
 
 ## 📖 Table of Contents
 

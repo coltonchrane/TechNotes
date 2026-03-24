@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Compress Image CLI
+parent: Disk Management
+nav_order: 1
 ---
 
 # Compressing JPGs to 1MB using jpegoptim

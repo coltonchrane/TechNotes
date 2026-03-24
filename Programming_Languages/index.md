@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Programming Languages
+has_children: true
+nav_order: 2
 ---
 
 # Programming Languages

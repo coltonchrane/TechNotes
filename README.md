@@ -1,4 +1,5 @@
-# A curated knowledge base powered by Gemini.
+# AutoNotes
+### A generative knowledge base powered by Gemini AI.
 
 ## 🚀 Features
 
