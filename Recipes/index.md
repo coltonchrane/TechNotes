@@ -6,8 +6,5 @@ nav_order: 8
 ---
 
 # Recipes
-
-- [How to Make Chicken Fried Steak with Sides](./chicken_fried_steak_with_sides.md)
-- [Professional-Grade Fajitas with Citrus-Aromatics Marinade](./fajita_marinade_and_preparation_guide.md)
-
+For those that want to dive into the culinary arts :hamburger:
 [Back to Home](../index.md)
