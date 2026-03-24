@@ -24,7 +24,7 @@ def main():
     with open(file_path, "r", encoding="utf-8") as f:
         current_content = f.read()
 
-    model_name = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash-lite")
+    model_name = os.environ.get("GEMINI_MODEL", "gemini-3-flash-preview")
 
     client = genai.Client(api_key=api_key)
 
@@ -40,7 +40,8 @@ User Feedback:
 "{comment_body}"
 
 Please update the technical note based on the feedback.
-- Preserve the existing YAML frontmatter (title, date, author, issue) unless the feedback explicitly asks to change them.
+- Preserve the existing H1 title and the "Source/Contributor" section at the bottom unless the feedback explicitly asks to change them.
+- Ensure main sections remain numbered (## 1., ## 2., etc.) as per the repository style.
 - Improve the formatting, clarity, or depth of the content as requested.
 - Return ONLY the raw markdown content. No conversational filler or markdown code blocks.
 """

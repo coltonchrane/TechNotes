@@ -14,8 +14,8 @@ This repository uses a **Gemini AI-powered bot** to help turn GitHub Issues into
 ## 🤖 What the Bot Does
 
 Once the `contribution` label is added:
-1.  **AI Analysis**: A GitHub Action sends the issue content to Gemini AI (`gemini-2.0-flash`).
-2.  **Formatting**: Gemini cleans up the text, fixes typos, organizes headers, and adds YAML frontmatter.
+1.  **AI Analysis**: A GitHub Action sends the issue content to Gemini AI (`gemini-3-flash-preview`).
+2.  **Formatting**: Gemini cleans up the text, fixes typos, organizes headers with numbered sections, and adds contributor metadata at the bottom.
 3.  **Pull Request**: The bot creates a new branch (e.g., `contribution/issue-123`) and opens a Pull Request with the new `.md` file.
 4.  **Notification**: The bot comments on your issue with a link to the Pull Request for your review.
 

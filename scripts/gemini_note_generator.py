@@ -18,7 +18,7 @@ def main():
     issue_author = os.environ.get("ISSUE_AUTHOR", "")
     issue_date = datetime.now().strftime("%Y-%m-%d")
 
-    model_name = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash-lite")
+    model_name = os.environ.get("GEMINI_MODEL", "gemini-3-flash-preview")
 
     if not issue_title:
         print("Error: ISSUE_TITLE environment variable not set.")
@@ -27,7 +27,7 @@ def main():
     client = genai.Client(api_key=api_key)
 
     prompt = f"""
-You are a technical documentation assistant. I have a GitHub issue that needs to be converted into a markdown note for my 'TechNotes' repository.
+You are a technical documentation assistant. I have a GitHub issue that needs to be converted into a detailed markdown note for my 'TechNotes' repository.
 
 Please analyze the following issue:
 Title: {issue_title}
@@ -36,12 +36,20 @@ Author: {issue_author}
 Issue Number: {issue_number}
 Date: {issue_date}
 
+Your goal is to transform this issue into a comprehensive, well-structured technical guide.
+
 Generate a JSON object with the following fields:
 1. "category": A suggested directory name for this note (e.g., 'Networking', 'Docker', 'Linux', 'Database'). Choose an existing one if it fits, or suggest a new logical one.
 2. "filename": A slugified filename ending in '.md' (e.g., 'ssh_setup.md').
 3. "content": The formatted markdown content.
-   - It MUST start with YAML frontmatter containing 'title', 'date', 'author', and 'issue' (link: https://github.com/coltonchrane/TechNotes/issues/{issue_number}).
-   - The body of the note should be nicely formatted, fixing any obvious typos, structuring the information logically with headers, code blocks, etc. If the issue body is short, just use it as is but nicely formatted.
+   - It MUST start with an H1 title (e.g., '# My Guide Title').
+   - Include a brief introduction (1-2 sentences) explaining the purpose of the guide.
+   - Use numbered H2 headers for main sections (e.g., '## 1. Installation', '## 2. Configuration').
+   - Use H3 headers for sub-sections.
+   - Provide detailed explanations, code blocks with language identifiers (bash, yaml, python, etc.), and practical examples.
+   - Fix typos and improve the flow of the original issue text.
+   - At the very end of the document, add a horizontal rule (---) followed by a small section:
+     "**Source:** [GitHub Issue #{issue_number}](https://github.com/coltonchrane/TechNotes/issues/{issue_number}) | **Contributor:** @{issue_author}"
 
 Return ONLY the raw JSON object. Do not wrap it in markdown code blocks like ```json ... ```.
 
@@ -49,7 +57,7 @@ Example Output format:
 {{
   "category": "Networking",
   "filename": "ssh_setup.md",
-  "content": "---\ntitle: SSH Setup\\ndate: 2026-03-23\\nauthor: user1\\nissue: https://github.com/coltonchrane/TechNotes/issues/123\\n---\\n\\nHere is the body..."
+  "content": "# SSH Server Setup\\n\\nThis guide covers...\\n\\n## 1. Installation\\n```bash\\nsudo apt install...```\\n\\n---\\n**Source:** [GitHub Issue #123]... | **Contributor:** @user1"
 }}
 """
 
@@ -90,8 +98,8 @@ Example Output format:
             with open(readme_path, "r", encoding="utf-8") as f:
                 readme_content = f.read()
 
-            # Extract title from frontmatter, handling optional quotes
-            title_match = re.search(r"^title:\s*[\"']?(.*?)[\"']?$", content, re.MULTILINE)
+            # Extract title from H1 header
+            title_match = re.search(r"^#\s*(.*?)$", content, re.MULTILINE)
             note_title = title_match.group(1).strip() if title_match else filename.replace(".md", "").replace("_", " ").title()
 
             # URL encode category and filename for links
