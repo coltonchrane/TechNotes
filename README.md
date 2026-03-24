@@ -48,7 +48,7 @@ A collection of technical notes, guides, and quick-reference documentation for v
 
 This repository uses a **Gemini AI-powered bot** to streamline contributions.
 
-- **`gemini_note_generator.py`**: A Python script that uses Gemini AI (`gemini-2.0-flash`) to transform raw issue text into clean, structured markdown.
+- **`gemini_note_generator.py`**: A Python script that uses Gemini AI (`gemini-3-flash-preview`) to transform raw issue text into clean, structured markdown.
 - **`gemini_pr_fixer.py`**: Handles iterative refinements based on PR comments.
 - **`issue_to_note.sh`**: A shell utility for basic issue-to-note conversion.
 
