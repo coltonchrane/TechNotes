@@ -9,13 +9,13 @@ A curated knowledge base powered by Gemini AI.
 
 ## 📖 Table of Contents
 
-### [Programming Languages](./Programming%20Languages)
-- [How C# Works](./Programming%20Languages/how_csharp_works.md)
+### [Programming Languages](./Programming_Languages)
+- [How C# Works](./Programming_Languages/how_csharp_works.md)
 
-### [Disk Management](./Disk%20Management)
-- [Compress Image CLI](./Disk%20Management/compress_image_cli.md)
-- [NCDU Guide](./Disk%20Management/ncdu.md)
-- [Ubuntu 25 Cleanup](./Disk%20Management/ubuntu_25_cleanup.md)
+### [Disk Management](./Disk_Management)
+- [Compress Image CLI](./Disk_Management/compress_image_cli.md)
+- [NCDU Guide](./Disk_Management/ncdu.md)
+- [Ubuntu 25 Cleanup](./Disk_Management/ubuntu_25_cleanup.md)
 
 ### [Docker](./Docker)
 - [Docker Cleanup Guide](./Docker/docker_cleanup_guide.md)
@@ -46,10 +46,11 @@ A curated knowledge base powered by Gemini AI.
 
 ```text
 .
-├── Disk Management/      # Storage, cleanup, and image compression
+├── Disk_Management/      # Storage, cleanup, and image compression
 ├── Docker/               # Containerization and orchestration
 ├── Markdown/             # Guides and references for markdown
 ├── Networking/           # Connectivity, SSH, and VPN guides
+├── Programming_Languages/# Programming language notes
 ├── scripts/              # Automation tools and AI-driven generators
 └── .github/workflows/    # CI/CD pipelines for note generation and PR fixing
 ```

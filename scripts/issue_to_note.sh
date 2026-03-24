@@ -17,15 +17,18 @@ if [ -z "$CATEGORY" ]; then
     CATEGORY="Inbound"
 fi
 
+# Slugify category (replace spaces with underscores)
+SLUG_CATEGORY=$(echo "$CATEGORY" | tr ' ' '_')
+
 # 2. Slugify the clean title
 SLUG=$(echo "$CLEAN_TITLE" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9 ]//g' | tr ' ' '_')
 FILENAME="${SLUG}.md"
 
 # 3. Create the directory if it doesn't exist
-mkdir -p "$CATEGORY"
+mkdir -p "$SLUG_CATEGORY"
 
 # Construct the note content with metadata
-cat <<EOF > "${CATEGORY}/${FILENAME}"
+cat <<EOF > "${SLUG_CATEGORY}/${FILENAME}"
 ---
 layout: default
 title: ${CLEAN_TITLE}
@@ -37,15 +40,15 @@ issue: https://github.com/coltonchrane/TechNotes/issues/${ISSUE_NUMBER}
 ${ISSUE_BODY}
 EOF
 
-echo "Created ${CATEGORY}/${FILENAME}"
+echo "Created ${SLUG_CATEGORY}/${FILENAME}"
 
 # 5. Update index.md
 INDEX_FILE="index.md"
 if [ -f "$INDEX_FILE" ]; then
-    NOTE_LINK="- [${CLEAN_TITLE}](./${CATEGORY}/${FILENAME})"
+    NOTE_LINK="- [${CLEAN_TITLE}](./${SLUG_CATEGORY}/${FILENAME})"
     
-    # Check if category header exists
-    CATEGORY_HEADER="### [${CATEGORY}](./${CATEGORY})"
+    # Check if category header exists (with original category as display name)
+    CATEGORY_HEADER="### [${CATEGORY}](./${SLUG_CATEGORY})"
     
     if grep -qF "$CATEGORY_HEADER" "$INDEX_FILE"; then
         # Category exists, append note link after the header
@@ -55,10 +58,10 @@ if [ -f "$INDEX_FILE" ]; then
         # Category doesn't exist, append new category and link after Table of Contents
         TOC_MARKER="## 📖 Table of Contents"
         if grep -qF "$TOC_MARKER" "$INDEX_FILE"; then
-            sed -i "/$TOC_MARKER/a \\\\n### [${CATEGORY}](./${CATEGORY})\\n${NOTE_LINK}" "$INDEX_FILE"
+            sed -i "/$TOC_MARKER/a \\\\n### [${CATEGORY}](./${SLUG_CATEGORY})\\n${NOTE_LINK}" "$INDEX_FILE"
             echo "Updated ${INDEX_FILE} with new category and note link."
         else
-            echo -e "\n\n### [${CATEGORY}](./${CATEGORY})\n${NOTE_LINK}" >> "$INDEX_FILE"
+            echo -e "\n\n### [${CATEGORY}](./${SLUG_CATEGORY})\n${NOTE_LINK}" >> "$INDEX_FILE"
             echo "Appended new category and note link to end of ${INDEX_FILE}."
         fi
     fi

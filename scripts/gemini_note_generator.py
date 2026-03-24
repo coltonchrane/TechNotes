@@ -79,6 +79,9 @@ Example Output format:
         data = json.loads(text.strip())
         
         category = data.get("category", "Drafts")
+        # Slugify category (replace spaces with underscores)
+        category = category.replace(" ", "_")
+        
         filename = data.get("filename", "note.md")
         content = data.get("content", "")
 
@@ -106,8 +109,8 @@ Example Output format:
             with open(index_path, "r", encoding="utf-8") as f:
                 index_content = f.read()
 
-            # URL encode category and filename for links
-            encoded_category = category.replace(" ", "%20")
+            # URL encode filename for links (category already slugified)
+            encoded_category = category # Already slugified
             encoded_filename = filename.replace(" ", "%20")
             
             note_link = f"- [{note_title}](./{encoded_category}/{encoded_filename})"
@@ -116,8 +119,9 @@ Example Output format:
             if note_link in index_content:
                 print(f"Note link already exists in {index_path}. Skipping update.")
             else:
-                # Check if category section exists
-                category_header = f"### [{category}](./{encoded_category})"
+                # Check if category section exists (Display name might still have spaces)
+                display_category = category.replace("_", " ")
+                category_header = f"### [{display_category}](./{encoded_category})"
                 
                 if category_header in index_content:
                     # Category exists, find the section and append the note

@@ -22,7 +22,8 @@ def update_index_entry(old_title, new_title, file_path):
     category_dir = os.path.dirname(file_path)
     filename = os.path.basename(file_path)
     
-    encoded_category = category_dir.replace(" ", "%20")
+    # Category dir is already slugified on disk
+    encoded_category = category_dir
     encoded_filename = filename.replace(" ", "%20")
 
     targets = [
