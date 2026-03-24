@@ -27,6 +27,7 @@ mkdir -p "$CATEGORY"
 # 4. Construct the note content with metadata
 cat <<EOF > "${CATEGORY}/${FILENAME}"
 ---
+layout: default
 title: ${CLEAN_TITLE}
 date: ${ISSUE_DATE}
 author: ${ISSUE_AUTHOR}

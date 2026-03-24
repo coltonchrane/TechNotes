@@ -1,3 +1,8 @@
+---
+layout: default
+title: Markdown Guide
+---
+
 # Markdown Syntax Guide
 
 A quick reference for common Markdown notation and formatting.

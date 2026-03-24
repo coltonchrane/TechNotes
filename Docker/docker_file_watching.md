@@ -1,3 +1,8 @@
+---
+layout: default
+title: Docker File Watching
+---
+
 # Implementing File Watching in Docker
 
 This guide covers setting up hot-reloading/file-watching for a stack consisting of React, Kotlin Micronaut, and Postgres.

@@ -1,3 +1,8 @@
+---
+layout: default
+title: GitHub Pages Markdown Setup
+---
+
 # Setting Up GitHub Pages for Markdown Repositories
 
 This guide provides a straightforward walkthrough for hosting a website directly from a GitHub repository containing Markdown files. It focuses on the simplest setup for users who want their documentation rendered as a clean, readable website with minimal overhead using Jekyll, GitHub's built-in static site engine.

@@ -1,3 +1,8 @@
+---
+layout: default
+title: LXC Run In Prod
+---
+
 # Ubuntu Production Deployment Guide (LXC on Proxmox)
 **Environment:** Ubuntu 24.04 LXC | Residential ISP
 

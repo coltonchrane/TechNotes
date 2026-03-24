@@ -1,3 +1,8 @@
+---
+layout: default
+title: GitHub Emojis
+---
+
 # GitHub Emojis
 
 <details>

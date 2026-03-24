@@ -1,3 +1,8 @@
+---
+layout: default
+title: SSH Setup Guide
+---
+
 # SSH Server Setup and Connection Guide
 
 This guide covers the basic steps to install an SSH server, configure it for security, and connect to it from a client.
