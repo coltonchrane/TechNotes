@@ -14,5 +14,5 @@ plugins:
 # Just the Docs settings
 # This ensures the search works correctly on GitHub Pages
 aux_links:
-  "Gemini Tech Notes on GitHub":
+  "AutoNotes on GitHub":
     - "https://github.com/coltonchrane/AutoNotes"
