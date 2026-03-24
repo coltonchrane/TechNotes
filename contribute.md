@@ -39,7 +39,6 @@ Submit your technical guides or raw notes below. Our **Gemini AI Bot** will auto
 
   submitBtn.addEventListener('click', function(e) {
     e.preventDefault();
-    console.log('Button clicked');
     const category = document.getElementById('category').value;
     const title = document.getElementById('title').value;
     const content = document.getElementById('content').value;
@@ -49,14 +48,14 @@ Submit your technical guides or raw notes below. Our **Gemini AI Bot** will auto
       return;
     }
 
-    const fullTitle = `[${category}] ${title}`;
+    const fullTitle = category ? `[${category}] ${title}` : title;
     const issueBody = `## Content\n${content}`;
     const labels = 'contribution';
     
     // Construct the GitHub New Issue URL
-    // Repository: coltonchrane/AutoNotes
     const repoUrl = 'https://github.com/coltonchrane/AutoNotes/issues/new';
     const params = new URLSearchParams({
+      template: 'contribution.md',
       title: fullTitle,
       body: issueBody,
       labels: labels
