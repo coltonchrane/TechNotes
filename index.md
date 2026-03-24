@@ -13,9 +13,11 @@ description: A generative knowledge base powered by Gemini AI.
 
 ## 🤝 Contributing
 
-We welcome new notes! This repository uses a **Gemini AI-powered bot** to help turn GitHub Issues into formatted technical notes. You don't even need to touch the code—just open an issue.
+We welcome new notes! This repository uses a **Gemini AI-powered bot** to help turn GitHub Issues into formatted technical notes. You can now contribute directly from the site:
 
-See [CONTRIBUTING.md](./CONTRIBUTING.md) for full details on how to contribute and how the automation works.
+👉 **[Contribute a Note Here](./contribute.md)**
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for full details on how the automation works.
 
 ## 🤖 Automation & Tools
 

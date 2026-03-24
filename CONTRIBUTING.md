@@ -4,7 +4,16 @@ We welcome new notes! This repository uses a **Gemini AI-powered bot** to help t
 
 ## 🚀 Quick Start for Contributors
 
-1.  **Create a New Issue**: Use the [New Issue](https://github.com/coltonchrane/AutoNotes/issues/new) button.
+There are two ways to contribute technical notes:
+
+### Method 1: Use the Contribution Form (Recommended)
+The easiest way is to use our **[Contribution Form](https://coltonchrane.github.io/AutoNotes/contribute.md)** directly on the website.
+1. Fill out the **Category**, **Title**, and **Content**.
+2. Click **Generate Note with AI 🤖**.
+3. You will be redirected to a pre-filled GitHub Issue. **Click "Submit new issue"** to trigger the automation.
+
+### Method 2: Manually Open a GitHub Issue
+1. **Create a New Issue**: Use the [New Issue](https://github.com/coltonchrane/AutoNotes/issues/new) button.
 2.  **Format the Title**: Use the format `[Category] Title of your note`. 
     *   *Example: `[Docker] How to clean up unused volumes`*
     *   If you omit the category, Gemini will try to suggest a logical one.
