@@ -6,5 +6,6 @@ nav_order: 8
 ---
 
 # Recipes
-For those that want to dive into the culinary arts :hamburger:
+For those that want to dive into the culinary arts
+
 [Back to Home](../index.md)
