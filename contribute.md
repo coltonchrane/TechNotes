@@ -57,13 +57,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     const fullTitle = category ? `[${category}] ${title}` : title;
-    const issueBody = content ? `## Content\n${content}` : ``;
     
     const repoUrl = 'https://github.com/coltonchrane/AutoNotes/issues/new';
     const params = new URLSearchParams({
       template: 'contribution.md',
       title: fullTitle,
-      body: issueBody,
+      body: content,
       labels: 'contribution'
     });
 
