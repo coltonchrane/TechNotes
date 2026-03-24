@@ -29,6 +29,9 @@ This repository uses a **Gemini AI-powered bot** to streamline contributions.
 
 ## 📖 Table of Contents
 
+### [Recipes](./Recipes)
+- [How to Make Chicken Fried Steak with Sides](./Recipes/chicken_fried_steak_with_sides.md)
+
 ### [Programming Languages](./Programming_Languages)
 - [How C# Works](./Programming_Languages/how_csharp_works.md)
 
