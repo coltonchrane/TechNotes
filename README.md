@@ -1,26 +1,7 @@
-# Tech Notes 📝
-
 A collection of technical notes, guides, and quick-reference documentation for various IT and development topics.
 
-## 🚀 Features
-
-- **AI-Powered Note Generation**: Automatically converts GitHub issues into formatted markdown notes using Gemini AI.
-- **Automated Refinement**: Bot-driven updates to notes via PR comments.
-- **Easy Categorization**: Automatically organizes notes into logical directories.
-
-## 📂 Project Structure
-
-```text
-.
-├── Disk Management/      # Storage, cleanup, and image compression
-├── Docker/               # Containerization and orchestration
-├── Markdown/             # Guides and references for markdown
-├── Networking/           # Connectivity, SSH, and VPN guides
-├── scripts/              # Automation tools and AI-driven generators
-└── .github/workflows/    # CI/CD pipelines for note generation and PR fixing
-```
-
-## 📖 Contents
+<details open>
+<summary><b><font size="5">📖 Table of Contents</font></b></summary>
 
 ### [Programming Languages](./Programming%20Languages)
 - [How C# Works](./Programming%20Languages/how_csharp_works.md)
@@ -43,21 +24,45 @@ A collection of technical notes, guides, and quick-reference documentation for v
 - [LXC Run in Production](./Networking/lxc_run_in_prod.md)
 - [SSH Setup Guide](./Networking/ssh_setup_guide.md)
 - [VPN Setup Guide](./Networking/vpn_setup_guide.md)
+</details>
 
-## 🤖 Automation & Tools
+<details open>
+<summary><b><font size="5">🚀 Features</font></b></summary>
+
+- **AI-Powered Note Generation**: Automatically converts GitHub issues into formatted markdown notes using Gemini AI.
+- **Automated Refinement**: Bot-driven updates to notes via PR comments.
+- **Easy Categorization**: Automatically organizes notes into logical directories.
+</details>
+
+<details>
+<summary><b><font size="5">📂 Project Structure</font></b></summary>
+
+```text
+.
+├── Disk Management/      # Storage, cleanup, and image compression
+├── Docker/               # Containerization and orchestration
+├── Markdown/             # Guides and references for markdown
+├── Networking/           # Connectivity, SSH, and VPN guides
+├── scripts/              # Automation tools and AI-driven generators
+└── .github/workflows/    # CI/CD pipelines for note generation and PR fixing
+```
+</details>
+
+<details>
+<summary><b><font size="5">🤖 Automation & Tools</font></b></summary>
 
 This repository uses a **Gemini AI-powered bot** to streamline contributions.
 
 - **`gemini_note_generator.py`**: A Python script that uses Gemini AI (`gemini-3-flash-preview`) to transform raw issue text into clean, structured markdown.
 - **`gemini_pr_fixer.py`**: Handles iterative refinements based on PR comments.
 - **`issue_to_note.sh`**: A shell utility for basic issue-to-note conversion.
+</details>
 
-## 🤝 Contributing
+<details>
+<summary><b><font size="5">🤝 Contributing</font></b></summary>
 
-We welcome new notes! You don't even need to touch the code—just open an issue.
+We welcome new notes! This repository uses a **Gemini AI-powered bot** to help turn GitHub Issues into formatted technical notes. You don't even need to touch the code—just open an issue.
 
-1.  **Open an Issue**: Use the `[Category] Title` format.
-2.  **Add the `contribution` label**: The bot will automatically generate a PR for you.
-3.  **Refine**: Comment on the PR if you need the AI to adjust anything.
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for full details on how to contribute and how the automation works.
+</details>
 
-See [CONTRIBUTING_BOT.md](./CONTRIBUTING_BOT.md) for full details on how the automation works.
