@@ -14,14 +14,7 @@ Submit your technical guides or raw notes below. Our **Gemini AI Bot** will auto
 <div id="contribution-form">
   <div style="margin-bottom: 15px;">
     <label for="category" style="display: block; font-weight: bold; margin-bottom: 5px;">Category</label>
-    <select id="category" style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid #ccc; background-color: #2e3440; color: #eceff4;">
-      <option value="Inbound">General (Inbound)</option>
-      <option value="Networking">Networking</option>
-      <option value="Docker">Docker</option>
-      <option value="Disk_Management">Disk Management</option>
-      <option value="Programming_Languages">Programming Languages</option>
-      <option value="Linux">Linux</option>
-    </select>
+    <input type="text" id="category" placeholder="e.g., Networking, Docker, Linux" style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid #ccc; background-color: #2e3440; color: #eceff4;">
   </div>
 
   <div style="margin-bottom: 15px;">
@@ -34,13 +27,19 @@ Submit your technical guides or raw notes below. Our **Gemini AI Bot** will auto
     <textarea id="content" rows="10" placeholder="Paste your raw notes, terminal output, or full guide here..." style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid #ccc; background-color: #2e3440; color: #eceff4; font-family: monospace;"></textarea>
   </div>
 
-  <button id="submit-btn" style="background-color: #5e81ac; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; font-weight: bold;">
+  <button type="button" id="submit-btn" style="background-color: #5e81ac; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; font-weight: bold;">
     Generate Note with AI 🤖
   </button>
 </div>
 
-<script>
-  document.getElementById('submit-btn').addEventListener('click', function() {
+<script type="text/javascript">
+(function() {
+  const submitBtn = document.getElementById('submit-btn');
+  if (!submitBtn) return;
+
+  submitBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    console.log('Button clicked');
     const category = document.getElementById('category').value;
     const title = document.getElementById('title').value;
     const content = document.getElementById('content').value;
@@ -65,19 +64,19 @@ Submit your technical guides or raw notes below. Our **Gemini AI Bot** will auto
 
     const finalUrl = `${repoUrl}?${params.toString()}`;
     
-    // Open the pre-filled issue in a new tab
-    window.open(finalUrl, '_blank');
+    // Use location.href instead of window.open to avoid popup blockers
+    window.location.href = finalUrl;
     
-    // Provide some feedback on the page
+    // Provide some feedback on the page as a fallback
     document.getElementById('contribution-form').innerHTML = `
       <div style="padding: 20px; background-color: #434c5e; border-radius: 8px; border: 1px solid #5e81ac; margin-top: 20px;">
-        <h3>🚀 Almost there!</h3>
-        <p>I've opened a pre-filled GitHub Issue for you in a new tab.</p>
-        <p><strong>Please click "Submit new issue" on that page</strong> to start the AI automation.</p>
-        <p>Once submitted, our bot will generate a Pull Request with your formatted note!</p>
+        <h3>🚀 Redirecting...</h3>
+        <p>If you are not redirected automatically, <a href="${finalUrl}" target="_blank" style="color: #88c0d0; text-decoration: underline;">click here to open the GitHub Issue</a>.</p>
+        <p>Once the issue page opens, <strong>please click "Submit new issue"</strong> to start the AI automation.</p>
       </div>
     `;
   });
+})();
 </script>
 
 ---
