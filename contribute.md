@@ -9,6 +9,11 @@ description: Contribute a new technical note to AutoNotes.
 
 Submit your technical guides or raw notes below. Our **Gemini AI Bot** will automatically refine your content, format it as a markdown note, and create a Pull Request for review.
 
+### How it works:
+1. **You Submit**: Your input is pre-filled into a GitHub Issue.
+2. **AI Processes**: Our Gemini AI bot reads your issue and generates a formatted Markdown note.
+3. **Review PR**: A new Pull Request is created with your note. Once merged, it appears here!
+
 ---
 
 <div id="contribution-form">
@@ -84,9 +89,3 @@ Submit your technical guides or raw notes below. Our **Gemini AI Bot** will auto
 })();
 </script>
 
----
-
-### How it works:
-1. **You Submit**: Your input is pre-filled into a GitHub Issue.
-2. **AI Processes**: Our Gemini AI bot reads your issue and generates a formatted Markdown note.
-3. **Review PR**: A new Pull Request is created with your note. Once merged, it appears here!
