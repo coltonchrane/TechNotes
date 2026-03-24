@@ -1,6 +1,15 @@
+---
+layout: default
+title: Classic Spaghetti Bolognese Guide
+nav_order: 11
+parent: Culinary Technical Notes
+---
+
 # Classic Spaghetti Bolognese Guide
 
 This guide provides a structured technical approach to preparing a traditional spaghetti bolognese. It emphasizes the Maillard reaction, proper emulsification, and the development of complex flavor profiles through controlled thermal reduction.
+
+[← Back to Index](../../index.md)
 
 ## 1. Specifications and Prerequisites
 
@@ -39,9 +48,9 @@ Seasoning & Starch:
 
 ### 2.2 Lipid Rendering and Protein Browning
 
-1. Adjust heat to medium-high.
+1. Adjust heat to medium-high to prepare for protein denaturation.
 2. Incorporate the ground beef. Break the protein clusters into uniform aggregates using a flat-edged wooden spatula.
-3. Sear the meat until it reaches a deep brown color, ensuring the Maillard reaction is achieved across all surfaces.
+3. Sear the meat until it reaches a deep brown color, ensuring the Maillard reaction is achieved across all surfaces. 
 4. **Optimization:** If excess lipid pooling occurs (exceeding 3 tbsp), drain the surplus fat to prevent the final sauce from becoming greasy.
 
 ### 2.3 Deglazing and Enzyme Breakdown
@@ -49,7 +58,7 @@ Seasoning & Starch:
 1. Add tomato paste to the center of the pot. Stir for 2 minutes until the paste darkens to a brick-red hue (caramelizing the sugars).
 2. Pour in the red wine to deglaze. Use the spatula to physically detach the *fond* (browned bits) from the vessel floor.
 3. Introduce crushed tomatoes and oregano. 
-4. Reduce thermal input to low. Maintain a constant low simmer (approx. 85°C/185°F) for 45–90 minutes. This duration is required for the collagen in the meat to convert to gelatin, providing body to the sauce.
+4. Reduce thermal input to low. Maintain a constant low simmer (approx. 85°C/185°F) for 45–90 minutes. This duration is required for the collagen in the meat to convert to gelatin, providing body and viscosity to the sauce.
 
 ## 3. Hydration and Final Assembly
 
