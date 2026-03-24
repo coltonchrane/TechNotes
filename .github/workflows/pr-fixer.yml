@@ -42,15 +42,21 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # Find the first .md file that was changed in this PR
-          PR_DATA=$(gh pr view ${{ env.PR_NUMBER }} --json files)
-          MD_FILE=$(echo $PR_DATA | jq -r '.files[] | select(.path | endswith(".md")) | .path' | head -n 1)
-          
-          if [ -z "$MD_FILE" ]; then
-            echo "No markdown file found in this PR."
-            exit 1
+          # If it's a review comment, use the path from the event
+          if [ "${{ github.event_name }}" == "pull_request_review_comment" ]; then
+            COMMENT_PATH="${{ github.event.comment.path }}"
+            echo "TARGET_FILE=$COMMENT_PATH" >> $GITHUB_ENV
+          else
+            # For issue comments, find the first .md file that was changed in this PR
+            PR_DATA=$(gh pr view ${{ env.PR_NUMBER }} --json files)
+            MD_FILE=$(echo $PR_DATA | jq -r '.files[] | select(.path | endswith(".md")) | .path' | head -n 1)
+            
+            if [ -z "$MD_FILE" ]; then
+              echo "No markdown file found in this PR."
+              exit 1
+            fi
+            echo "TARGET_FILE=$MD_FILE" >> $GITHUB_ENV
           fi
-          echo "MD_FILE=$MD_FILE" >> $GITHUB_ENV
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -67,7 +73,7 @@ jobs:
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_MODEL: gemini-3-flash-preview
-          FILE_PATH: ${{ env.MD_FILE }}
+          FILE_PATH: ${{ env.TARGET_FILE }}
           COMMENT_BODY: ${{ github.event.comment.body }}
         run: |
           chmod +x scripts/gemini_pr_fixer.py
@@ -77,12 +83,12 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add "${{ env.MD_FILE }}"
+          git add .
           if git diff --staged --quiet; then
             echo "No changes to commit."
             exit 0
           fi
-          git commit -m "docs: (Gemini Refinement) update ${{ env.MD_FILE }} based on PR comment"
+          git commit -m "docs: (Gemini Refinement) update based on PR comment"
           git push
 
       - name: React to Comment
