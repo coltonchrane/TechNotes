@@ -168,6 +168,28 @@ Example Output format:
                 with open(index_path, "w", encoding="utf-8") as f:
                     f.write(updated_index_content)
                 print(f"Successfully updated {index_path}")
+            
+            # --- Category index.md Update Logic ---
+            category_index_path = os.path.join(category, "index.md")
+            if os.path.exists(category_index_path):
+                with open(category_index_path, "r", encoding="utf-8") as f:
+                    cat_index_content = f.read()
+                
+                cat_note_link = f"- [{note_title}](./{encoded_filename})"
+                
+                if cat_note_link not in cat_index_content:
+                    # Find a good place to insert - before the "Back to Home" link
+                    back_link_marker = "[Back to Home]"
+                    if back_link_marker in cat_index_content:
+                        insertion_point = cat_index_content.find(back_link_marker)
+                        updated_cat_content = cat_index_content[:insertion_point] + cat_note_link + "\n\n" + cat_index_content[insertion_point:]
+                    else:
+                        updated_cat_content = cat_index_content + f"\n{cat_note_link}"
+                    
+                    with open(category_index_path, "w", encoding="utf-8") as f:
+                        f.write(updated_cat_content)
+                    print(f"Successfully updated {category_index_path}")
+            # -----------------------------
         # -----------------------------
         
     except Exception as e:

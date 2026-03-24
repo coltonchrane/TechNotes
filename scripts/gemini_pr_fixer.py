@@ -18,35 +18,36 @@ def extract_title(content):
     return None
 
 def update_index_entry(old_title, new_title, file_path):
-    index_path = "index.md"
-    if not os.path.exists(index_path):
-        return
-
-    with open(index_path, "r", encoding="utf-8") as f:
-        content = f.read()
-
-    # The entry in index.md usually looks like: - [Title](./Category/Filename.md)
-    # We'll use the file path to find the correct entry
-    category = os.path.dirname(file_path)
+    # Update both the root index.md and the category-specific index.md
+    category_dir = os.path.dirname(file_path)
     filename = os.path.basename(file_path)
     
-    encoded_category = category.replace(" ", "%20")
+    encoded_category = category_dir.replace(" ", "%20")
     encoded_filename = filename.replace(" ", "%20")
-    
-    # Path as it appears in index.md link
-    link_path = f"./{encoded_category}/{encoded_filename}"
-    
-    # Regex to find the entry: - [ANYTHING](link_path)
-    pattern = rf"- \[.*?\]\({re.escape(link_path)}\)"
-    replacement = f"- [{new_title}]({link_path})"
-    
-    if re.search(pattern, content):
-        new_content = re.sub(pattern, replacement, content)
-        with open(index_path, "w", encoding="utf-8") as f:
-            f.write(new_content)
-        print(f"Updated link title in {index_path} from '{old_title}' to '{new_title}'")
-    else:
-        print(f"No existing link found for {link_path} in {index_path}")
+
+    targets = [
+        ("index.md", f"./{encoded_category}/{encoded_filename}"), # Root index
+        (os.path.join(category_dir, "index.md"), f"./{encoded_filename}") # Category index
+    ]
+
+    for target_path, link_path in targets:
+        if not os.path.exists(target_path):
+            continue
+
+        with open(target_path, "r", encoding="utf-8") as f:
+            content = f.read()
+
+        # Regex to find the entry: - [ANYTHING](link_path)
+        pattern = rf"- \[.*?\]\({re.escape(link_path)}\)"
+        replacement = f"- [{new_title}]({link_path})"
+        
+        if re.search(pattern, content):
+            new_content = re.sub(pattern, replacement, content)
+            with open(target_path, "w", encoding="utf-8") as f:
+                f.write(new_content)
+            print(f"Updated link title in {target_path} from '{old_title}' to '{new_title}'")
+        else:
+            print(f"No existing link found for {link_path} in {target_path}")
 
 def main():
     api_key = os.environ.get("GEMINI_API_KEY")
