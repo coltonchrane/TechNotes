@@ -34,6 +34,14 @@ A collection of technical notes, guides, and quick-reference documentation for v
 - **Easy Categorization**: Automatically organizes notes into logical directories.
 </details>
 
+<details open>
+<summary><b><font size="5">🤝 Contributing</font></b></summary>
+
+We welcome new notes! This repository uses a **Gemini AI-powered bot** to help turn GitHub Issues into formatted technical notes. You don't even need to touch the code—just open an issue.
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for full details on how to contribute and how the automation works.
+</details>
+
 <details>
 <summary><b><font size="5">📂 Project Structure</font></b></summary>
 
@@ -58,11 +66,4 @@ This repository uses a **Gemini AI-powered bot** to streamline contributions.
 - **`issue_to_note.sh`**: A shell utility for basic issue-to-note conversion.
 </details>
 
-<details>
-<summary><b><font size="5">🤝 Contributing</font></b></summary>
-
-We welcome new notes! This repository uses a **Gemini AI-powered bot** to help turn GitHub Issues into formatted technical notes. You don't even need to touch the code—just open an issue.
-
-See [CONTRIBUTING.md](./CONTRIBUTING.md) for full details on how to contribute and how the automation works.
-</details>
 
