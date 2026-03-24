@@ -1,3 +1,8 @@
+---
+layout: default
+title: VPN Setup Guide
+---
+
 # VPN Setup and Connection Guide (WireGuard)
 
 WireGuard is a modern, high-performance VPN that is easier to configure than OpenVPN or IPsec. This guide focuses on WireGuard for its simplicity and speed.

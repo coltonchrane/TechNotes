@@ -40,6 +40,7 @@ User Feedback:
 "{comment_body}"
 
 Please update the technical note based on the feedback.
+- PRESERVE the existing Jekyll front matter (the block between --- at the very top).
 - Preserve the existing H1 title and the "Source/Contributor" section at the bottom unless the feedback explicitly asks to change them.
 - Ensure main sections remain numbered (## 1., ## 2., etc.) as per the repository style.
 - Improve the formatting, clarity, or depth of the content as requested.

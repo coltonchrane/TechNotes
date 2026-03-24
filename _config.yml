@@ -1,0 +1,9 @@
+# Site settings
+title: Gemini Tech Notes
+description: A curated knowledge base powered by Gemini AI.
+theme: jekyll-theme-cayman
+
+# Build settings
+remote_theme: pages-themes/cayman@v0.2.0
+plugins:
+  - jekyll-remote-theme

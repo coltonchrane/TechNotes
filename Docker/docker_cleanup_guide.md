@@ -1,3 +1,8 @@
+---
+layout: default
+title: Docker Cleanup Guide
+---
+
 # Docker Disk Space Management Guide
 
 Docker can quickly consume significant disk space with old images, stopped containers, and unused volumes. This guide covers how to clean up and manage Docker's footprint.

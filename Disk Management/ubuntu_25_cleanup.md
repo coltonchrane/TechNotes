@@ -1,3 +1,8 @@
+---
+layout: default
+title: Ubuntu 25 Cleanup
+---
+
 # Ubuntu 25.04 Disk Cleanup Guide
 
 This guide covers methods to reclaim disk space by removing unnecessary packages, caches, and logs.
