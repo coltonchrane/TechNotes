@@ -91,7 +91,7 @@ User Feedback:
 
 Please update the index file.
 - PRESERVE the existing Jekyll front matter.
-- Preserve the overall structure (Table of Contents, Features, Project Structure, etc.).
+- Preserve the overall structure (Table of Contents, Features, etc.).
 - Ensure links to notes remain valid.
 - Return ONLY the updated markdown content. No conversational filler or code blocks.
 """
