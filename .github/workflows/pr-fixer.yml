@@ -60,13 +60,19 @@ jobs:
           if [ -z "$TARGET_FILE" ]; then
             # If no target file (issue comment or review summary), find the first .md file that was changed in this PR
             PR_DATA=$(gh pr view ${{ env.PR_NUMBER }} --json files)
-            MD_FILE=$(echo $PR_DATA | jq -r '.files[] | select(.path | endswith(".md")) | .path' | head -n 1)
+            MD_FILE=$(echo "$PR_DATA" | jq -r '.files[] | select(.path | endswith(".md")) | .path' | head -n 1)
+
+            # Sanitize MD_FILE before using it in GITHUB_ENV to prevent environment injection
+            MD_FILE_CLEAN=$(printf '%s' "$MD_FILE" | tr -d '\n')
+            # Optionally trim leading/trailing whitespace
+            MD_FILE_CLEAN="${MD_FILE_CLEAN#"${MD_FILE_CLEAN%%[![:space:]]*}"}"
+            MD_FILE_CLEAN="${MD_FILE_CLEAN%"${MD_FILE_CLEAN##*[![:space:]]}"}"
             
-            if [ -z "$MD_FILE" ]; then
+            if [ -z "$MD_FILE_CLEAN" ]; then
               echo "No markdown file found in this PR."
               exit 0 # Exit gracefully if no MD file to update
             fi
-            echo "TARGET_FILE=$MD_FILE" >> $GITHUB_ENV
+            echo "TARGET_FILE=$MD_FILE_CLEAN" >> $GITHUB_ENV
           fi
 
       - name: Set up Python
