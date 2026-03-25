@@ -1,4 +1,4 @@
-# AutoNotes
+# [AutoNotes](https://coltonchrane.github.io/AutoNotes/)
 ### A generative knowledge base powered by Gemini AI.
 
 ## 🚀 Features
