@@ -1,6 +1,6 @@
-# TechNotes Automation Scripts
+# AutoNotes Automation Scripts
 
-This directory contains automation tools designed to manage and maintain the [TechNotes](https://github.com/coltonchrane/TechNotes) documentation repository. These scripts leverage the Gemini API to streamline the conversion of GitHub issues and pull request feedback into high-quality technical documentation.
+This directory contains automation tools designed to manage and maintain the [AutoNotes](https://github.com/coltonchrane/AutoNotes) documentation repository. These scripts leverage the Gemini API to streamline the conversion of GitHub issues and pull request feedback into high-quality technical documentation.
 
 ## 🛠️ Tools Overview
 
