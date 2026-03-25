@@ -81,5 +81,5 @@ After you save your settings and commit your files (`_config.yml` and your `.md`
 4. **Navigation Tip:** Jekyll maps your files to HTML URLs. For example, `setup.md` becomes accessible at `.../setup.html`.
 
 ---
-**Source:** [GitHub Issue #8](https://github.com/coltonchrane/TechNotes/issues/8) | **Contributor:** @coltonchrane
+**Source:** [GitHub Issue #8](https://github.com/coltonchrane/AutoNotes/issues/8) | **Contributor:** @coltonchrane
 ---

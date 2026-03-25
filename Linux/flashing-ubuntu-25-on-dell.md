@@ -72,4 +72,4 @@ sudo apt update && sudo apt upgrade -y
 ```
 
 ---
-**Source:** [GitHub Issue #25](https://github.com/coltonchrane/TechNotes/issues/25) | **Contributor:** @coltonchrane
+**Source:** [GitHub Issue #25](https://github.com/coltonchrane/AutoNotes/issues/25) | **Contributor:** @coltonchrane

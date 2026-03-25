@@ -66,5 +66,5 @@ GitHub provides automatic TLS certificates through Let's Encrypt for custom doma
 3. Once available, check the box to ensure all traffic is encrypted.
 
 ---
-**Source:** [GitHub Issue #17](https://github.com/coltonchrane/TechNotes/issues/17) | **Contributor:** @coltonchrane
+**Source:** [GitHub Issue #17](https://github.com/coltonchrane/AutoNotes/issues/17) | **Contributor:** @coltonchrane
 ---

@@ -66,4 +66,4 @@ Set up three shallow bowls in an assembly line:
 For the best results, serve the steak immediately while the crust is hot. Plate alongside mashed potatoes and top both the steak and the potatoes with a liberal amount of the black pepper gravy.
 
 ---
-**Source:** [GitHub Issue #21](https://github.com/coltonchrane/TechNotes/issues/21) | **Contributor:** @coltonchrane
+**Source:** [GitHub Issue #21](https://github.com/coltonchrane/AutoNotes/issues/21) | **Contributor:** @coltonchrane

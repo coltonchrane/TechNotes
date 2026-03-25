@@ -132,4 +132,4 @@ async function submitIssue() {
 6. **Execution**: The main page uses the token to post an issue directly to the GitHub API.
 
 ---
-**Source:** [GitHub Issue #33](https://github.com/coltonchrane/TechNotes/issues/33) | **Contributor:** @coltonchrane
+**Source:** [GitHub Issue #33](https://github.com/coltonchrane/AutoNotes/issues/33) | **Contributor:** @coltonchrane

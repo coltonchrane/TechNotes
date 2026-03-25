@@ -91,5 +91,5 @@ pandoc input.md --metadata title="My Document" --metadata author="John Doe" -o o
 ```
 
 ---
-**Source:** [GitHub Issue #23](https://github.com/coltonchrane/TechNotes/issues/23) | **Contributor:** @coltonchrane
+**Source:** [GitHub Issue #23](https://github.com/coltonchrane/AutoNotes/issues/23) | **Contributor:** @coltonchrane
 ---

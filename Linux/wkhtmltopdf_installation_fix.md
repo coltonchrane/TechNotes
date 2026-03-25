@@ -51,4 +51,4 @@ wkhtmltopdf --version
 You should see an output indicating the version number and that it is compiled with a patched version of Qt. You can now proceed with converting your Markdown notes to PDF without errors.
 
 ---
-**Source:** [GitHub Issue #29](https://github.com/coltonchrane/TechNotes/issues/29) | **Contributor:** @coltonchrane
+**Source:** [GitHub Issue #29](https://github.com/coltonchrane/AutoNotes/issues/29) | **Contributor:** @coltonchrane

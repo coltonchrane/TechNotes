@@ -27,7 +27,7 @@ def main():
     client = genai.Client(api_key=api_key)
 
     prompt = f"""
-You are a technical documentation assistant. I have a GitHub issue that needs to be converted into a detailed markdown note for my 'TechNotes' repository.
+You are a technical documentation assistant. I have a GitHub issue that needs to be converted into a detailed markdown note for my 'AutoNotes' repository.
 
 Please analyze the following issue:
 Title: {issue_title}
@@ -49,7 +49,7 @@ Generate a JSON object with the following fields:
    - Provide detailed explanations, code blocks with language identifiers (bash, yaml, python, etc.), and practical examples.
    - Fix typos and improve the flow of the original issue text.
    - At the very end of the document, add a horizontal rule (---) followed by a small section:
-     "**Source:** [GitHub Issue #{issue_number}](https://github.com/coltonchrane/TechNotes/issues/{issue_number}) | **Contributor:** @{issue_author}"
+     "**Source:** [GitHub Issue #{issue_number}](https://github.com/coltonchrane/AutoNotes/issues/{issue_number}) | **Contributor:** @{issue_author}"
 
 Return ONLY the raw JSON object. Do not wrap it in markdown code blocks like ```json ... ```.
 

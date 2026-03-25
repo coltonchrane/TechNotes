@@ -54,4 +54,4 @@ When working within a Git repository, p10k uses specific indicators to represent
 - **? 42**: There are 42 **untracked** files.
 
 ---
-**Source:** [GitHub Issue #31](https://github.com/coltonchrane/TechNotes/issues/31) | **Contributor:** @coltonchrane
+**Source:** [GitHub Issue #31](https://github.com/coltonchrane/AutoNotes/issues/31) | **Contributor:** @coltonchrane

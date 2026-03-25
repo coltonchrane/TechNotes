@@ -78,4 +78,4 @@ Add sliced bell peppers (multi-colored) and white onions to the skillet. The moi
 Identify the direction of the muscle fibers (the grain). Slice the steak strictly **against the grain** at a 45-degree bias. This ensures the shortest possible muscle fibers, resulting in a tender mouthfeel.
 
 ---
-**Source:** [GitHub Issue #19](https://github.com/coltonchrane/TechNotes/issues/19) | **Contributor:** @coltonchrane
+**Source:** [GitHub Issue #19](https://github.com/coltonchrane/AutoNotes/issues/19) | **Contributor:** @coltonchrane

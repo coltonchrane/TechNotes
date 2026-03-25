@@ -40,7 +40,7 @@ parent: ${CATEGORY}
 nav_order: ${NAV_ORDER}
 date: ${ISSUE_DATE}
 author: ${ISSUE_AUTHOR}
-issue: https://github.com/coltonchrane/TechNotes/issues/${ISSUE_NUMBER}
+issue: https://github.com/coltonchrane/AutoNotes/issues/${ISSUE_NUMBER}
 ---
 
 ${ISSUE_BODY}

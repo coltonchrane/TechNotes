@@ -97,4 +97,4 @@ return TradeSignal.Hold;
 ```
 
 ---
-**Source:** [GitHub Issue #38](https://github.com/coltonchrane/TechNotes/issues/38) | **Contributor:** @coltonchrane
+**Source:** [GitHub Issue #38](https://github.com/coltonchrane/AutoNotes/issues/38) | **Contributor:** @coltonchrane
