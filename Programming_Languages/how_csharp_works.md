@@ -2,7 +2,7 @@
 layout: default
 title: How C# Works
 parent: Programming Languages
-nav_order: 1
+nav_order: 2
 date: 2026-03-24
 author: coltonchrane
 issue: https://github.com/coltonchrane/AutoNotes/issues/5

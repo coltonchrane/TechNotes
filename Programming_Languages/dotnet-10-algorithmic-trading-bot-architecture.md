@@ -1,8 +1,11 @@
 ---
 layout: default
 title: Algorithmic Trading Bot Architecture with .NET 10
-parent: .NET
+parent: Programming Languages
 nav_order: 1
+date: 2026-03-24
+author: coltonchrane
+issue: https://github.com/coltonchrane/AutoNotes/issues/38
 ---
 
 # Algorithmic Trading Bot Architecture with .NET 10
