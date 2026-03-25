@@ -22,22 +22,35 @@ jobs:
 
     steps:
       - name: Set Environment Variables
+        env:
+          REPOSITORY: ${{ github.repository }}
+          EVENT_NAME: ${{ github.event_name }}
+          ISSUE_PR_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_COMMENT_BODY: ${{ github.event.comment.body }}
+          ISSUE_REACTION_PATH: /repos/${{ github.repository }}/issues/comments/${{ github.event.comment.id }}/reactions
+          PR_REVIEW_COMMENT_PR_NUMBER: ${{ github.event.pull_request.number }}
+          PR_REVIEW_COMMENT_BODY: ${{ github.event.comment.body }}
+          PR_REVIEW_COMMENT_PATH: ${{ github.event.comment.path }}
+          PR_REVIEW_COMMENT_REACTION_PATH: /repos/${{ github.repository }}/pulls/comments/${{ github.event.comment.id }}/reactions
+          PR_REVIEW_NUMBER: ${{ github.event.pull_request.number }}
+          PR_REVIEW_BODY: ${{ github.event.review.body }}
+          PR_REVIEW_REACTION_PATH: /repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/reviews/${{ github.event.review.id }}/reactions
         run: |
-          echo "Event: ${{ github.event_name }}"
-          if [ "${{ github.event_name }}" == "issue_comment" ]; then
-            echo "PR_NUMBER=${{ github.event.issue.number }}" >> $GITHUB_ENV
-            echo "COMMENT_BODY=${{ github.event.comment.body }}" >> $GITHUB_ENV
-            echo "REACTION_PATH=/repos/${{ github.repository }}/issues/comments/${{ github.event.comment.id }}/reactions" >> $GITHUB_ENV
-          elif [ "${{ github.event_name }}" == "pull_request_review_comment" ]; then
-            echo "PR_NUMBER=${{ github.event.pull_request.number }}" >> $GITHUB_ENV
-            echo "COMMENT_BODY=${{ github.event.comment.body }}" >> $GITHUB_ENV
-            echo "TARGET_FILE=${{ github.event.comment.path }}" >> $GITHUB_ENV
-            echo "REACTION_PATH=/repos/${{ github.repository }}/pulls/comments/${{ github.event.comment.id }}/reactions" >> $GITHUB_ENV
-          elif [ "${{ github.event_name }}" == "pull_request_review" ]; then
-            echo "PR_NUMBER=${{ github.event.pull_request.number }}" >> $GITHUB_ENV
-            echo "COMMENT_BODY=${{ github.event.review.body }}" >> $GITHUB_ENV
+          echo "Event: $EVENT_NAME"
+          if [ "$EVENT_NAME" = "issue_comment" ]; then
+            echo "PR_NUMBER=$ISSUE_PR_NUMBER" >> "$GITHUB_ENV"
+            echo "COMMENT_BODY=$ISSUE_COMMENT_BODY" >> "$GITHUB_ENV"
+            echo "REACTION_PATH=$ISSUE_REACTION_PATH" >> "$GITHUB_ENV"
+          elif [ "$EVENT_NAME" = "pull_request_review_comment" ]; then
+            echo "PR_NUMBER=$PR_REVIEW_COMMENT_PR_NUMBER" >> "$GITHUB_ENV"
+            echo "COMMENT_BODY=$PR_REVIEW_COMMENT_BODY" >> "$GITHUB_ENV"
+            echo "TARGET_FILE=$PR_REVIEW_COMMENT_PATH" >> "$GITHUB_ENV"
+            echo "REACTION_PATH=$PR_REVIEW_COMMENT_REACTION_PATH" >> "$GITHUB_ENV"
+          elif [ "$EVENT_NAME" = "pull_request_review" ]; then
+            echo "PR_NUMBER=$PR_REVIEW_NUMBER" >> "$GITHUB_ENV"
+            echo "COMMENT_BODY=$PR_REVIEW_BODY" >> "$GITHUB_ENV"
             # Reactions on reviews are different, we'll skip reaction for now or target the review
-            echo "REACTION_PATH=/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/reviews/${{ github.event.review.id }}/reactions" >> $GITHUB_ENV
+            echo "REACTION_PATH=$PR_REVIEW_REACTION_PATH" >> "$GITHUB_ENV"
           fi
 
       - name: Checkout Repository
