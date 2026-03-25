@@ -7,7 +7,7 @@ nav_order: 1
 
 # GitHub Emojis
 
-<details>
+<details markdown="1">
 <summary><b>Smileys & Emotion</b></summary>
 
 | Emoji | Command |
@@ -209,7 +209,7 @@ nav_order: 1
 
 </details>
 
-<details>
+<details markdown="1">
 <summary><b>People & Body</b></summary>
 
 | Emoji | Command |
@@ -675,7 +675,7 @@ nav_order: 1
 
 </details>
 
-<details>
+<details markdown="1">
 <summary><b>Animals & Nature</b></summary>
 
 | Emoji | Command |
@@ -916,7 +916,7 @@ nav_order: 1
 
 </details>
 
-<details>
+<details markdown="1">
 <summary><b>Food & Drink</b></summary>
 
 | Emoji | Command |
@@ -1018,7 +1018,7 @@ nav_order: 1
 
 </details>
 
-<details>
+<details markdown="1">
 <summary><b>Travel & Places</b></summary>
 
 | Emoji | Command |
@@ -1135,7 +1135,7 @@ nav_order: 1
 
 </details>
 
-<details>
+<details markdown="1">
 <summary><b>Activities</b></summary>
 
 | Emoji | Command |
@@ -1203,7 +1203,7 @@ nav_order: 1
 
 </details>
 
-<details>
+<details markdown="1">
 <summary><b>Objects</b></summary>
 
 | Emoji | Command |
@@ -1283,7 +1283,7 @@ nav_order: 1
 
 </details>
 
-<details>
+<details markdown="1">
 <summary><b>Symbols</b></summary>
 
 | Emoji | Command |
@@ -1351,7 +1351,7 @@ nav_order: 1
 
 </details>
 
-<details>
+<details markdown="1">
 <summary><b>Flags & Others</b></summary>
 
 | Emoji | Command |
@@ -1994,7 +1994,7 @@ nav_order: 1
 
 </details>
 
-<details>
+<details markdown="1">
 <summary><b>GitHub Custom</b></summary>
 
 | Emoji | Command |

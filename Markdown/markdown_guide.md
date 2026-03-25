@@ -88,7 +88,7 @@ def hello_world():
 
 ## Collapsible Sections
 ```markdown
-<details>
+<details markdown="1">
 <summary>Click to expand</summary>
 
 Hidden content goes here.
