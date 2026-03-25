@@ -29,6 +29,9 @@ This repository uses a **Gemini AI-powered bot** to streamline contributions.
 
 ## 📖 Table of Contents
 
+### [Zsh](./Zsh)
+- [Powerlevel10k (p10k) Quick Reference Guide](./Zsh/powerlevel10k-reference.md)
+
 ### [Linux](./Linux)
 - [Converting Markdown to PDF on Ubuntu using Pandoc](./Linux/convert-markdown-to-pdf-pandoc.md)
 
