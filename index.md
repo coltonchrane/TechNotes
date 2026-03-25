@@ -66,3 +66,4 @@ This repository uses a **Gemini AI-powered bot** to streamline contributions.
 - [Setting Up GitHub Pages for Markdown Repositories](./GitHub/github_pages_markdown_setup.md)
 
 - [Configuring a Custom Domain for GitHub Pages](./GitHub/github_pages_custom_domain.md)
+- [GitHub Issue Creator for Static Pages](./GitHub/github_issue_creator_oauth_popup.md)
