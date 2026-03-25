@@ -30,10 +30,16 @@ dough_base:
   unsalted_butter: 75g (softened)
   large_egg: 1
   fine_sea_salt: 5g
-glaze_system:
+glaze_vanilla_system:
   confectioners_sugar: 200g
   whole_milk: 45ml
   vanilla_extract: 5ml
+glaze_chocolate_system:
+  confectioners_sugar: 150g
+  unsweetened_cocoa_powder: 30g
+  whole_milk: 60ml
+  vanilla_extract: 5ml
+  melted_butter: 15g
 ```
 
 ## 2. Dough Development and Fermentation
@@ -75,8 +81,16 @@ fi
 
 Carefully drop 2-3 doughnuts into the oil. Fry for 60-90 seconds per side until a deep golden brown is achieved. Remove and drain on wire racks.
 
-### 4.2 Glazing Procedure
-Whisk the glaze ingredients in a shallow bowl until the viscosity is consistent. Dip the doughnuts while they are still slightly warm to ensure a smooth, even coating. Allow the glaze to set for 10 minutes before serving.
+### 4.2 Finishing Procedures
+
+#### 4.2.1 Vanilla Glaze Application
+Whisk the vanilla glaze ingredients in a shallow bowl until the viscosity is consistent. Dip the doughnuts while they are still slightly warm to ensure a smooth, even coating.
+
+#### 4.2.2 Chocolate Icing Application
+Sift the confectioners' sugar and cocoa powder together to eliminate lumps. Whisk in the milk, vanilla, and melted butter until a glossy, thick consistency is achieved. If the icing is too viscous, add milk in 5ml increments. Dip the top half of the cooled doughnuts into the icing and allow the excess to drip off before returning to the wire rack.
+
+Allow all glazes to set for 10 minutes before serving.
 
 ---
 **Source:** [GitHub Issue #45](https://github.com/coltonchrane/AutoNotes/issues/45) | **Contributor:** @coltonchrane
+---
