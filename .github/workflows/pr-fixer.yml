@@ -22,34 +22,35 @@ jobs:
 
     steps:
       - name: Set Environment Variables
+        env:
+          REPOSITORY: ${{ github.repository }}
+          EVENT_NAME: ${{ github.event_name }}
+          ISSUE_PR_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_COMMENT_BODY: ${{ github.event.comment.body }}
+          ISSUE_REACTION_PATH: /repos/${{ github.repository }}/issues/comments/${{ github.event.comment.id }}/reactions
+          PR_REVIEW_COMMENT_PR_NUMBER: ${{ github.event.pull_request.number }}
+          PR_REVIEW_COMMENT_BODY: ${{ github.event.comment.body }}
+          PR_REVIEW_COMMENT_PATH: ${{ github.event.comment.path }}
+          PR_REVIEW_COMMENT_REACTION_PATH: /repos/${{ github.repository }}/pulls/comments/${{ github.event.comment.id }}/reactions
+          PR_REVIEW_NUMBER: ${{ github.event.pull_request.number }}
+          PR_REVIEW_BODY: ${{ github.event.review.body }}
+          PR_REVIEW_REACTION_PATH: /repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/reviews/${{ github.event.review.id }}/reactions
         run: |
-          echo "Event: ${{ github.event_name }}"
-          if [ "${{ github.event_name }}" == "issue_comment" ]; then
-            echo "PR_NUMBER=${{ github.event.issue.number }}" >> $GITHUB_ENV
-            cat <<EOF >> $GITHUB_ENV
-          COMMENT_BODY<<EOF
-          ${{ github.event.comment.body }}
-          EOF
-          EOF
-            echo "REACTION_PATH=/repos/${{ github.repository }}/issues/comments/${{ github.event.comment.id }}/reactions" >> $GITHUB_ENV
-          elif [ "${{ github.event_name }}" == "pull_request_review_comment" ]; then
-            echo "PR_NUMBER=${{ github.event.pull_request.number }}" >> $GITHUB_ENV
-            cat <<EOF >> $GITHUB_ENV
-          COMMENT_BODY<<EOF
-          ${{ github.event.comment.body }}
-          EOF
-          EOF
-            echo "TARGET_FILE=${{ github.event.comment.path }}" >> $GITHUB_ENV
-            echo "REACTION_PATH=/repos/${{ github.repository }}/pulls/comments/${{ github.event.comment.id }}/reactions" >> $GITHUB_ENV
-          elif [ "${{ github.event_name }}" == "pull_request_review" ]; then
-            echo "PR_NUMBER=${{ github.event.pull_request.number }}" >> $GITHUB_ENV
-            cat <<EOF >> $GITHUB_ENV
-          COMMENT_BODY<<EOF
-          ${{ github.event.review.body }}
-          EOF
-          EOF
+          echo "Event: $EVENT_NAME"
+          if [ "$EVENT_NAME" = "issue_comment" ]; then
+            echo "PR_NUMBER=$ISSUE_PR_NUMBER" >> "$GITHUB_ENV"
+            echo "COMMENT_BODY=$ISSUE_COMMENT_BODY" >> "$GITHUB_ENV"
+            echo "REACTION_PATH=$ISSUE_REACTION_PATH" >> "$GITHUB_ENV"
+          elif [ "$EVENT_NAME" = "pull_request_review_comment" ]; then
+            echo "PR_NUMBER=$PR_REVIEW_COMMENT_PR_NUMBER" >> "$GITHUB_ENV"
+            echo "COMMENT_BODY=$PR_REVIEW_COMMENT_BODY" >> "$GITHUB_ENV"
+            echo "TARGET_FILE=$PR_REVIEW_COMMENT_PATH" >> "$GITHUB_ENV"
+            echo "REACTION_PATH=$PR_REVIEW_COMMENT_REACTION_PATH" >> "$GITHUB_ENV"
+          elif [ "$EVENT_NAME" = "pull_request_review" ]; then
+            echo "PR_NUMBER=$PR_REVIEW_NUMBER" >> "$GITHUB_ENV"
+            echo "COMMENT_BODY=$PR_REVIEW_BODY" >> "$GITHUB_ENV"
             # Reactions on reviews are different, we'll skip reaction for now or target the review
-            echo "REACTION_PATH=/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/reviews/${{ github.event.review.id }}/reactions" >> $GITHUB_ENV
+            echo "REACTION_PATH=$PR_REVIEW_REACTION_PATH" >> "$GITHUB_ENV"
           fi
 
       - name: Checkout Repository
@@ -72,13 +73,19 @@ jobs:
           if [ -z "$TARGET_FILE" ]; then
             # If no target file (issue comment or review summary), find the first .md file that was changed in this PR
             PR_DATA=$(gh pr view ${{ env.PR_NUMBER }} --json files)
-            MD_FILE=$(echo $PR_DATA | jq -r '.files[] | select(.path | endswith(".md")) | .path' | head -n 1)
+            MD_FILE=$(echo "$PR_DATA" | jq -r '.files[] | select(.path | endswith(".md")) | .path' | head -n 1)
+
+            # Sanitize MD_FILE before using it in GITHUB_ENV to prevent environment injection
+            MD_FILE_CLEAN=$(printf '%s' "$MD_FILE" | tr -d '\n')
+            # Optionally trim leading/trailing whitespace
+            MD_FILE_CLEAN="${MD_FILE_CLEAN#"${MD_FILE_CLEAN%%[![:space:]]*}"}"
+            MD_FILE_CLEAN="${MD_FILE_CLEAN%"${MD_FILE_CLEAN##*[![:space:]]}"}"
             
-            if [ -z "$MD_FILE" ]; then
+            if [ -z "$MD_FILE_CLEAN" ]; then
               echo "No markdown file found in this PR."
               exit 0 # Exit gracefully if no MD file to update
             fi
-            echo "TARGET_FILE=$MD_FILE" >> $GITHUB_ENV
+            echo "TARGET_FILE=$MD_FILE_CLEAN" >> $GITHUB_ENV
           fi
 
       - name: Set up Python
