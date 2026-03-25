@@ -88,15 +88,7 @@ nav_order: ${CAT_NAV_ORDER}
 
 # ${CATEGORY}
 
-- [${CLEAN_TITLE}](./${FILENAME})
-
 [Back to Home](../index.md)
 EOF
     echo "Created ${CATEGORY_INDEX} with navigation metadata"
-else
-    # Update existing category index (if not already there)
-    if ! grep -qF "./${FILENAME}" "$CATEGORY_INDEX"; then
-        # Insert after the H1 header
-        sed -i "/# ${CATEGORY}/a - [${CLEAN_TITLE}](./${FILENAME})" "$CATEGORY_INDEX"
-    fi
 fi

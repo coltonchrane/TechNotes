@@ -11,7 +11,7 @@ A Python script that uses the Gemini API to transform a GitHub issue into a well
   - Analyzes issue title and body to suggest a category and filename.
   - Generates comprehensive content with H2/H3 headers and code blocks.
   - Automatically prepends Jekyll front matter for site navigation.
-  - Updates the root `index.md` and category `index.md` with links to the new note.
+  - Updates the root `index.md` with links to the new note.
 - **Environment Variables**:
   - `GEMINI_API_KEY`: Your Google Gemini API key.
   - `ISSUE_TITLE`: The title of the GitHub issue.
@@ -26,7 +26,7 @@ A Python utility designed to refine existing notes or the repository index based
 - **Features**:
   - Updates specific files while preserving existing Jekyll front matter and structural elements.
   - Maintains repository style (numbered sections, source footers).
-  - Automatically updates link titles in `index.md` if a note's title is modified during the refinement process.
+  - Automatically updates link titles in the root `index.md` if a note's title is modified during the refinement process.
 - **Environment Variables**:
   - `GEMINI_API_KEY`: Your Google Gemini API key.
   - `FILE_PATH`: Path to the file to be updated (e.g., `Networking/ssh_setup.md`).

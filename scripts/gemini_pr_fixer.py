@@ -18,7 +18,7 @@ def extract_title(content):
     return None
 
 def update_index_entry(old_title, new_title, file_path):
-    # Update both the root index.md and the category-specific index.md
+    # Update only the root index.md. Category index.md files no longer contain note links.
     category_dir = os.path.dirname(file_path)
     filename = os.path.basename(file_path)
     
@@ -28,7 +28,6 @@ def update_index_entry(old_title, new_title, file_path):
 
     targets = [
         ("index.md", f"./{encoded_category}/{encoded_filename}"), # Root index
-        (os.path.join(category_dir, "index.md"), f"./{encoded_filename}") # Category index
     ]
 
     for target_path, link_path in targets:
