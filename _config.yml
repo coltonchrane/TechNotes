@@ -10,6 +10,7 @@ color_scheme: dark
 plugins:
   - jekyll-remote-theme
   - jekyll-relative-links
+  - jemoji
 
 # Just the Docs settings
 # This ensures the search works correctly on GitHub Pages
