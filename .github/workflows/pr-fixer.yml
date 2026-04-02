@@ -64,25 +64,28 @@ jobs:
       - name: Checkout PR Branch
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER_ENV: ${{ env.PR_NUMBER }}
         run: |
-          gh pr checkout $PR_NUMBER
+          gh pr checkout "$PR_NUMBER_ENV"
 
       - name: Get PR Info
         id: pr_info
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TARGET_FILE_ENV: ${{ env.TARGET_FILE }}
+          PR_NUMBER_ENV: ${{ env.PR_NUMBER }}
         run: |
-          echo "Target File before check: $TARGET_FILE"
-          if [ -z "$TARGET_FILE" ]; then
+          echo "Target File before check: $TARGET_FILE_ENV"
+          if [ -z "$TARGET_FILE_ENV" ]; then
             # If no target file (issue comment or review summary), find the first .md file that was changed in this PR
-            PR_DATA=$(gh pr view $PR_NUMBER --json files)
+            PR_DATA=$(gh pr view $PR_NUMBER_ENV --json files)
             MD_FILE=$(echo $PR_DATA | jq -r '.files[] | select(.path | endswith(".md")) | .path' | head -n 1)
             
-            if [ -z "$MD_FILE" ]; then
+            if [ -z "$MD_FILE" ] || [ "$MD_FILE" == "null" ]; then
               echo "No markdown file found in this PR."
               exit 0 # Exit gracefully if no MD file to update
             fi
-            echo "TARGET_FILE=$MD_FILE_CLEAN" >> $GITHUB_ENV
+            echo "TARGET_FILE=$MD_FILE" >> $GITHUB_ENV
           fi
 
       - name: Set up Python
@@ -96,7 +99,7 @@ jobs:
 
       - name: Update Note with Gemini
         id: update_note
-        if: env.COMMENT_BODY != ''
+        if: env.COMMENT_BODY != '' && env.TARGET_FILE != ''
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_MODEL: gemini-3-flash-preview
