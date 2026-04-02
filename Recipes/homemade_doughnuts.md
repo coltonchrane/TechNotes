@@ -40,6 +40,11 @@ glaze_chocolate_system:
   whole_milk: 60ml
   vanilla_extract: 5ml
   melted_butter: 15g
+glaze_strawberry_system:
+  confectioners_sugar: 150g
+  freeze_dried_strawberry_powder: 25g
+  whole_milk: 35ml
+  vanilla_extract: 2ml
 ```
 
 ## 2. Dough Development and Fermentation
@@ -88,6 +93,9 @@ Whisk the vanilla glaze ingredients in a shallow bowl until the viscosity is con
 
 #### 4.2.2 Chocolate Icing Application
 Sift the confectioners' sugar and cocoa powder together to eliminate lumps. Whisk in the milk, vanilla, and melted butter until a glossy, thick consistency is achieved. If the icing is too viscous, add milk in 5ml increments. Dip the top half of the cooled doughnuts into the icing and allow the excess to drip off before returning to the wire rack.
+
+#### 4.2.3 Strawberry Glaze Application
+Sift the confectioners' sugar and freeze-dried strawberry powder to ensure a homogeneous color and texture. Gradually whisk in the milk and vanilla extract. The use of dehydrated fruit solids provides intense flavor without introducing excess moisture that can compromise the doughnut's structural integrity. Dip the surface of the doughnuts and allow them to stabilize for 15 minutes to form a matte shell.
 
 Allow all glazes to set for 10 minutes before serving.
 
