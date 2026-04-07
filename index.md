@@ -68,6 +68,8 @@ This repository uses a **Gemini AI-powered bot** to streamline contributions.
 - [SSH Setup Guide](./Networking/ssh_setup_guide.md)
 - [VPN Setup Guide](./Networking/vpn_setup_guide.md)
 
+- [How to Download, Run, and Configure Tailscale](./Networking/tailscale_setup_guide.md)
+
 ### [GitHub](./GitHub)
 - [Setting Up GitHub Pages for Markdown Repositories](./GitHub/github_pages_markdown_setup.md)
 
