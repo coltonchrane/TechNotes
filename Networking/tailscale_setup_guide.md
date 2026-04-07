@@ -49,12 +49,27 @@ Ensure the daemon is enabled and running using `systemd`:
 sudo systemctl enable --now tailscaled
 ```
 
-### Completing Authentication
-To bring the interface up and link the machine to your account, run the `up` command:
+### Connecting to Existing Infrastructure
+When you run the `up` command, you are effectively joining your machine to an existing Tailnet (your private network). 
+
+**Standard Authentication:**
+To bring the interface up and link the machine via a web browser:
 ```bash
 sudo tailscale up
 ```
-This command will generate a unique login URL in your terminal. Copy this link into a web browser (on any device) and sign in using your SSO provider. Once authenticated, your Linux machine will be assigned a permanent internal IP address (100.x.y.z).
+Copy the generated URL into a browser and sign in using your existing SSO provider (Google, Microsoft, GitHub, etc.) to register the device.
+
+**Headless/Automated Authentication (Auth Keys):**
+If you are connecting a server to an existing infrastructure without access to a web browser, use a pre-authenticated auth key generated from the [Tailscale Admin Console](https://login.tailscale.com/admin/settings/keys):
+```bash
+sudo tailscale up --authkey=tskey-auth-kXXXXX-XXXXXXXXXXXXXXXX
+```
+
+**Connecting to a Private Coordination Server (Headscale):**
+If your infrastructure uses [Headscale](https://github.com/juanfont/headscale) (an open-source, self-hosted implementation of the Tailscale control server), point your client to your specific login URL:
+```bash
+sudo tailscale up --login-server https://headscale.example.com
+```
 
 ## 3. Configuration and Advanced Features
 
