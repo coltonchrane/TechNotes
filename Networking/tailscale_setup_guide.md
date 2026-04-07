@@ -7,77 +7,103 @@ nav_order: 5
 
 # How to Download, Run, and Configure Tailscale
 
-Tailscale is a zero-config VPN that creates a secure mesh network between your devices using the WireGuard protocol. This guide provides a step-by-step walkthrough for installing, authenticating, and managing Tailscale across different environments.
+Tailscale is a zero-config VPN that creates a secure mesh network between your devices using the WireGuard protocol. This guide provides a step-by-step walkthrough for installing, authenticating, and managing Tailscale specifically on Ubuntu and other Linux-based distributions.
 
-## 1. Installation
+## 1. Installation on Ubuntu/Linux
 
-Tailscale supports a wide variety of platforms. Depending on your operating system, use one of the following methods to install the client.
+Tailscale provides an automated script for most Linux distributions, but you can also install it manually via the package manager for better version control on Ubuntu.
 
-### Linux (Standard Installation)
-The most efficient way to install Tailscale on Linux is using the official one-line script, which handles repository addition and package installation automatically.
+### Automated Installation (Recommended)
+The most efficient way to install Tailscale is using the official one-line script, which detects your distribution, adds the Tailscale repository, and installs the package automatically.
 
 ```bash
 curl -fsSL https://tailscale.com/install.sh | sh
 ```
 
-### macOS and Windows
-For desktop operating systems, it is recommended to use the graphical installers:
-- **macOS:** Download from the Mac App Store or use the standalone `.pkg` from the official website.
-- **Windows:** Download and run the `.msi` installer from the Tailscale download page.
+### Manual Installation (APT Repository)
+If you prefer to manage the repository manually on Ubuntu, follow these steps to add the official Tailscale repository:
+
+1. **Add Tailscale’s GPG key:**
+   ```bash
+   sudo mkdir -p --mode=0755 /usr/share/keyrings
+   curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/$(lsb_release -cs).noarmor.gpg | sudo tee /usr/share/keyrings/tailscale-archive-keyring.gpg >/dev/null
+   ```
+
+2. **Add the repository to your sources list:**
+   ```bash
+   curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/$(lsb_release -cs).tailscale-keyring.list | sudo tee /etc/apt/sources.list.d/tailscale.list
+   ```
+
+3. **Install the Tailscale client:**
+   ```bash
+   sudo apt update && sudo apt install tailscale
+   ```
 
 ## 2. Running and Authenticating
 
-After installation, the Tailscale service needs to be started and linked to your Tailnet (your private network).
+On Linux, Tailscale runs as a system daemon (`tailscaled`). Once installed, the service usually starts automatically, but you must manually authenticate the device to link it to your Tailnet.
 
-### Starting the Service on Linux
-Use the following command to bring the Tailscale interface up:
-
+### Managing the Service
+Ensure the daemon is enabled and running using `systemd`:
 ```bash
-sudo tailscale up
+sudo systemctl enable --now tailscaled
 ```
 
 ### Completing Authentication
-When you run the `up` command for the first time, a login URL will be generated in your terminal. Copy this link into your web browser and sign in using your SSO provider (such as Google, Microsoft, or GitHub). Once authenticated, your device will be assigned a unique internal IP address (100.x.y.z).
+To bring the interface up and link the machine to your account, run the `up` command:
+```bash
+sudo tailscale up
+```
+This command will generate a unique login URL in your terminal. Copy this link into a web browser (on any device) and sign in using your SSO provider. Once authenticated, your Linux machine will be assigned a permanent internal IP address (100.x.y.z).
 
 ## 3. Configuration and Advanced Features
 
-Tailscale offers powerful features beyond simple connectivity that can be configured directly from the command line.
+Tailscale offers powerful features optimized for Linux servers and workstations, manageable directly from the command line.
 
 ### Setting Up an Exit Node
-If you want to route your internet traffic through a specific machine (e.g., to access the web from a trusted home connection while on public Wi-Fi), you can configure a machine as an exit node.
-
-**To advertise as an exit node:**
+If you want to route internet traffic from other devices through this Ubuntu machine (useful for secure browsing on public Wi-Fi), configure it as an exit node:
 ```bash
 sudo tailscale up --advertise-exit-node
 ```
-
-**To use an exit node on a client:**
-```bash
-sudo tailscale up --exit-node=<exit-node-ip-or-hostname>
-```
+*Note: You may need to enable IP forwarding in `/etc/sysctl.conf` for this feature to function.*
 
 ### Enabling Tailscale SSH
-Tailscale can manage SSH authentication for you, allowing you to SSH into machines on your Tailnet without managing manual SSH keys.
-
+Tailscale can manage SSH authentication for you, allowing you to access your Linux machine without manual SSH key management:
 ```bash
 sudo tailscale up --ssh
+```
+
+### Advertising Subnet Routes
+To allow Tailscale to access other devices on your local physical network (e.g., `192.168.1.0/24`), use the `--advertise-routes` flag:
+```bash
+sudo tailscale up --advertise-routes=192.168.1.0/24
 ```
 
 ## 4. Managing the Network
 
 ### Checking Connection Status
-To view all devices currently connected to your Tailnet and their respective IP addresses, use the status command:
-
+To view all devices currently connected to your Tailnet and their respective IP addresses:
 ```bash
 tailscale status
 ```
 
-### Disconnecting and Stopping
-If you need to disconnect from the network without uninstalling the software, use the `down` command:
+### Finding Your Local Tailscale IP
+To quickly retrieve only the IPv4 address assigned to your machine:
+```bash
+tailscale ip -4
+```
 
+### Disconnecting and Stopping
+To disconnect from the Tailnet without uninstalling the software:
 ```bash
 sudo tailscale down
 ```
 
+To fully stop the background process:
+```bash
+sudo systemctl stop tailscaled
+```
+
 ---
 **Source:** [GitHub Issue #51](https://github.com/coltonchrane/AutoNotes/issues/51) | **Contributor:** @coltonchrane
+---
