@@ -29,6 +29,9 @@ This repository uses a **Gemini AI-powered bot** to streamline contributions.
 
 ## 📖 Table of Contents
 
+### [AI & Machine Learning](./AI_&_Machine_Learning)
+- [Setting up Ollama on Proxmox for Local AI Agents](./AI_&_Machine_Learning/ollama_proxmox_setup.md)
+
 ### [Zsh](./Zsh)
 - [Powerlevel10k (p10k) Quick Reference Guide](./Zsh/powerlevel10k-reference.md)
 
