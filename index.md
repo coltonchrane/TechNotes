@@ -29,6 +29,9 @@ This repository uses a **Gemini AI-powered bot** to streamline contributions.
 
 ## 📖 Table of Contents
 
+### [AI Prompting](./AI_Prompting)
+- [Best Practices for Prompting Gemini Models](./AI_Prompting/gemini_prompting_best_practices.md)
+
 ### [Zsh](./Zsh)
 - [Powerlevel10k (p10k) Quick Reference Guide](./Zsh/powerlevel10k-reference.md)
 
