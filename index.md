@@ -29,6 +29,9 @@ This repository uses a **Gemini AI-powered bot** to streamline contributions.
 
 ## 📖 Table of Contents
 
+### [Multimedia](./Multimedia)
+- [Professional Music Production on Ubuntu: A Free Tool Suite](./Multimedia/music_production_ubuntu_guide.md)
+
 ### [Zsh](./Zsh)
 - [Powerlevel10k (p10k) Quick Reference Guide](./Zsh/powerlevel10k-reference.md)
 
